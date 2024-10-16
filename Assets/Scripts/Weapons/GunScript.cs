@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class GunScript : MonoBehaviour
     public float fireRate = 15f;
     public float range = 100f;
     private float nextFire = 0f;
+    public bool singleShot = false;
 
 
     // Start is called before the first frame update
@@ -23,7 +25,11 @@ public class GunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButton("Fire1") && Time.time >= nextFire){
+        if(singleShot && Input.GetButtonDown("Fire1") && Time.time >= nextFire){
+            nextFire = Time.time + 1f/fireRate;
+            Shoot();
+        }
+        else if(!singleShot && Input.GetButton("Fire1") && Time.time >= nextFire){
             nextFire = Time.time + 1f/fireRate;
             Shoot();
         }
