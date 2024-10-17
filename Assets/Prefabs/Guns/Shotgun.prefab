@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4024073913886302906}
   - component: {fileID: 8357203268454504176}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,9 +49,18 @@ MonoBehaviour:
   cam: {fileID: 0}
   muzzleFlash: {fileID: 6464044029395555975}
   impactEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
+  ammoText: {fileID: 0}
+  gunNameText: {fileID: 0}
+  ReloadText: {fileID: 0}
+  gunName: Shotgun
   damage: 10
   fireRate: 15
-  range: 100
+  range: 10
+  maxAmmo: 6
+  currentAmmo: 0
+  reloadTime: 3
+  singleShot: 1
+  isShotGun: 1
 --- !u!1 &6293037419641924178
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +123,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6bd5e5bea08b3e641a3abc866936260d, type: 2}
+  - {fileID: 2100000, guid: e3ba04175f771404580f5f6a4cd700f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
