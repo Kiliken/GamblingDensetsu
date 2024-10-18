@@ -54,10 +54,9 @@ MonoBehaviour:
   ReloadText: {fileID: 0}
   gunName: Shotgun
   damage: 10
-  fireRate: 15
+  fireRate: 0.8
   range: 10
   maxAmmo: 6
-  currentAmmo: 0
   reloadTime: 3
   singleShot: 1
   isShotGun: 1

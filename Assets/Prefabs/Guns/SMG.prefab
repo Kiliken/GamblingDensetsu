@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4024073913886302906}
   - component: {fileID: 8357203268454504176}
   m_Layer: 0
-  m_Name: AssaultRifle
+  m_Name: SMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,14 +52,14 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   gunNameText: {fileID: 0}
   ReloadText: {fileID: 0}
-  gunName: Assault Rifle
+  gunName: SMG
   damage: 10
-  fireRate: 15
+  fireRate: 0.1
   range: 100
   maxAmmo: 30
-  currentAmmo: 0
   reloadTime: 2.5
   singleShot: 0
+  isShotGun: 0
 --- !u!1 &6293037419641924178
 GameObject:
   m_ObjectHideFlags: 0

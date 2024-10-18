@@ -54,12 +54,12 @@ MonoBehaviour:
   ReloadText: {fileID: 0}
   gunName: Pistol
   damage: 10
-  fireRate: 15
-  range: 100
+  fireRate: 0.5
+  range: 50
   maxAmmo: 10
-  currentAmmo: 0
   reloadTime: 2
   singleShot: 1
+  isShotGun: 0
 --- !u!1 &6293037419641924178
 GameObject:
   m_ObjectHideFlags: 0

@@ -575,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5154910756981628115, guid: 02ae88e925a840c469801e65afdde17a, type: 3}
       propertyPath: m_Name
-      value: AssaultRifle
+      value: SMG
       objectReference: {fileID: 0}
     - target: {fileID: 5154910756981628115, guid: 02ae88e925a840c469801e65afdde17a, type: 3}
       propertyPath: m_IsActive
@@ -585,6 +585,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1597453086}
+    - target: {fileID: 8357203268454504176, guid: 02ae88e925a840c469801e65afdde17a, type: 3}
+      propertyPath: ADSZoom
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8357203268454504176, guid: 02ae88e925a840c469801e65afdde17a, type: 3}
       propertyPath: ammoText
       value: 
@@ -1389,6 +1393,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1597453086}
+    - target: {fileID: 8357203268454504176, guid: 01110385f7b0fe14397b24fc51faaf94, type: 3}
+      propertyPath: ADSZoom
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8357203268454504176, guid: 01110385f7b0fe14397b24fc51faaf94, type: 3}
       propertyPath: ammoText
       value: 
@@ -2243,6 +2251,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1597453086}
+    - target: {fileID: 8357203268454504176, guid: 9f8d37ee063b94442860e2e0fb17795a, type: 3}
+      propertyPath: ADSZoom
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8357203268454504176, guid: 9f8d37ee063b94442860e2e0fb17795a, type: 3}
       propertyPath: ammoText
       value: 
