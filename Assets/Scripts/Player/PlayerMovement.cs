@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public float crouchingSpeed;
     public float crouchYScale;
     private float startYScale;
+    bool crouching;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -65,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+        crouching = false;
     }
 
     private void MyInput() {
@@ -80,13 +82,18 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Input.GetAxisRaw("Crouch") != 0) {
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+            if (crouching == false)
+            {
+                transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+                rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
 
+                crouching = true;
+            }
         }
 
         if (Input.GetAxisRaw("Crouch") == 0) {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+            crouching = false;
         }
     }
 
