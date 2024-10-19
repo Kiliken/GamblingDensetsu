@@ -15,6 +15,7 @@ public class GunScript : MonoBehaviour
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI gunNameText;
     public GameObject ReloadText;
+    Animator animator;
     public string gunName = "Gun";
     public float damage = 10f;
     public float fireRate = 0.1f;
@@ -37,6 +38,7 @@ public class GunScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         currentAmmo = maxAmmo;
     }
 
@@ -56,9 +58,11 @@ public class GunScript : MonoBehaviour
         // ADS
         if(Input.GetButton("Fire2")){
             cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, ADSZoom, ADSSpeed * Time.deltaTime);
+            animator.SetBool("aiming", true);
         }
         else if(cam.fieldOfView < defaultZoom){
             cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, defaultZoom, ADSSpeed * Time.deltaTime);
+            animator.SetBool("aiming", false);
         }
         // Shoot
         if(currentAmmo > 0){
