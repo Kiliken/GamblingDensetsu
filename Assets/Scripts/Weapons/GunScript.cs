@@ -27,7 +27,7 @@ public class GunScript : MonoBehaviour
     private float nextFire = 0f;
     public bool singleShot = false;
     public bool isShotGun = false;
-    private float defaultZoom = 60f;
+    private float defaultZoom = 90f;
     public float ADSZoom = 40f;
     public float ADSSpeed = 120f;
 

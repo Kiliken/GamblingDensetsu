@@ -535,15 +535,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4024073913886302906, guid: 02ae88e925a840c469801e65afdde17a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4024073913886302906, guid: 02ae88e925a840c469801e65afdde17a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4024073913886302906, guid: 02ae88e925a840c469801e65afdde17a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.38
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 4024073913886302906, guid: 02ae88e925a840c469801e65afdde17a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -579,7 +579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5154910756981628115, guid: 02ae88e925a840c469801e65afdde17a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8357203268454504176, guid: 02ae88e925a840c469801e65afdde17a, type: 3}
       propertyPath: cam
@@ -1343,15 +1343,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4024073913886302906, guid: 01110385f7b0fe14397b24fc51faaf94, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4024073913886302906, guid: 01110385f7b0fe14397b24fc51faaf94, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4024073913886302906, guid: 01110385f7b0fe14397b24fc51faaf94, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.38
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 4024073913886302906, guid: 01110385f7b0fe14397b24fc51faaf94, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1387,7 +1387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5154910756981628115, guid: 01110385f7b0fe14397b24fc51faaf94, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8357203268454504176, guid: 01110385f7b0fe14397b24fc51faaf94, type: 3}
       propertyPath: cam
@@ -1795,7 +1795,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2205,15 +2205,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4024073913886302906, guid: 9f8d37ee063b94442860e2e0fb17795a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4024073913886302906, guid: 9f8d37ee063b94442860e2e0fb17795a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4024073913886302906, guid: 9f8d37ee063b94442860e2e0fb17795a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.38
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 4024073913886302906, guid: 9f8d37ee063b94442860e2e0fb17795a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2246,6 +2246,10 @@ PrefabInstance:
     - target: {fileID: 5154910756981628115, guid: 9f8d37ee063b94442860e2e0fb17795a, type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154910756981628115, guid: 9f8d37ee063b94442860e2e0fb17795a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8357203268454504176, guid: 9f8d37ee063b94442860e2e0fb17795a, type: 3}
       propertyPath: cam
