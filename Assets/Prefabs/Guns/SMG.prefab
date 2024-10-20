@@ -59,10 +59,11 @@ MonoBehaviour:
   range: 100
   maxAmmo: 30
   reloadTime: 2.5
+  recoil: 0.5
   singleShot: 0
   isShotGun: 0
-  ADSZoom: 40
-  ADSSpeed: 120
+  ADSZoom: 60
+  ADSSpeed: 200
 --- !u!95 &6070068290747050946
 Animator:
   serializedVersion: 5

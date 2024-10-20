@@ -55,14 +55,15 @@ MonoBehaviour:
   ReloadText: {fileID: 0}
   gunName: Pistol
   damage: 10
-  fireRate: 0.5
+  fireRate: 0.3
   range: 50
   maxAmmo: 10
   reloadTime: 2
+  recoil: 3
   singleShot: 1
   isShotGun: 0
-  ADSZoom: 40
-  ADSSpeed: 120
+  ADSZoom: 60
+  ADSSpeed: 200
 --- !u!95 &7783983628507169379
 Animator:
   serializedVersion: 5

@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 public class GunScript : MonoBehaviour
 {
     public Camera cam;
+    PlayerCam camScript;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
     public TextMeshProUGUI ammoText;
@@ -25,6 +26,7 @@ public class GunScript : MonoBehaviour
     public float reloadTime = 2f;
     private bool isReloading = false;
     private float nextFire = 0f;
+    public float recoil = 1f;
     public bool singleShot = false;
     public bool isShotGun = false;
     private float defaultZoom = 90f;
@@ -39,6 +41,7 @@ public class GunScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        camScript = cam.GetComponent<PlayerCam>();
         currentAmmo = maxAmmo;
     }
 
@@ -47,16 +50,14 @@ public class GunScript : MonoBehaviour
         isReloading = false;
         gunNameText.text = gunName;
         UpdateAmmoText();
+        ReloadText.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isReloading)
-            return;
-
         // ADS
-        if(Input.GetButton("Fire2")){
+        if(Input.GetButton("Fire2") && !isReloading){
             cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, ADSZoom, ADSSpeed * Time.deltaTime);
             animator.SetBool("aiming", true);
         }
@@ -64,6 +65,10 @@ public class GunScript : MonoBehaviour
             cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, defaultZoom, ADSSpeed * Time.deltaTime);
             animator.SetBool("aiming", false);
         }
+
+        if(isReloading)
+            return;
+        
         // Shoot
         if(currentAmmo > 0){
             if(singleShot && Input.GetButtonDown("Fire1") && Time.time >= nextFire){
@@ -106,9 +111,11 @@ public class GunScript : MonoBehaviour
                 enemy.TakeDamage(damage);
                 ie.transform.parent = enemy.transform;
             }
-
             //cam.transform.Rotate(5f, 0, 0);
         }
+
+        camScript.recoil += recoil;
+        animator.SetBool("shooting", true);
     }
 
 
@@ -138,6 +145,8 @@ public class GunScript : MonoBehaviour
                 }
             }
         }
+        camScript.recoil += recoil;
+        animator.SetBool("shooting", true);
     }
 
 
@@ -155,5 +164,9 @@ public class GunScript : MonoBehaviour
 
     public void UpdateAmmoText(){
         ammoText.text = currentAmmo + "/" + maxAmmo;
+    }
+
+    public void ShootEvent(){
+        animator.SetBool("shooting", false);
     }
 }
