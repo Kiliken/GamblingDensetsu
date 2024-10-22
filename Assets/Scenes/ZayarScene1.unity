@@ -543,7 +543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &626893295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,7 +658,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 60}
-  m_SizeDelta: {x: 400, y: 80}
+  m_SizeDelta: {x: 800, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &644192826
 GameObject:
@@ -2008,7 +2008,7 @@ PrefabInstance:
     - target: {fileID: 3778356004963137485, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: ReloadText
       value: 
-      objectReference: {fileID: 626893294}
+      objectReference: {fileID: 626893295}
     - target: {fileID: 3778356004963137485, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: gunNameText
       value: 
@@ -2018,13 +2018,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1597453086}
     - target: {fileID: 4410949244420920870, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
+      propertyPath: ADSZoom
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410949244420920870, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 196157726}
     - target: {fileID: 4410949244420920870, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: ReloadText
       value: 
-      objectReference: {fileID: 626893294}
+      objectReference: {fileID: 626893295}
     - target: {fileID: 4410949244420920870, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: gunNameText
       value: 
@@ -2069,6 +2073,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6306667397394552843, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
+      propertyPath: currentWeapon
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7483659950206898025, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: m_Name
       value: Weapons
@@ -2088,7 +2096,7 @@ PrefabInstance:
     - target: {fileID: 8135139781158353351, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: ReloadText
       value: 
-      objectReference: {fileID: 626893294}
+      objectReference: {fileID: 626893295}
     - target: {fileID: 8135139781158353351, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: gunNameText
       value: 

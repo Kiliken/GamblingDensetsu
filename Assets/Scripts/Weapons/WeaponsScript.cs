@@ -13,7 +13,10 @@ public class WeaponsScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SwitchWeapon(0);
+        transform.GetChild(0).GetComponent<GunScript>().SelectThisWeapon();
+        transform.GetChild(1).GetComponent<GunScript>().SelectOtherWeapon();
+        transform.GetChild(2).GetComponent<GunScript>().SelectOtherWeapon();
+        transform.GetChild(3).GetComponent<GunScript>().SelectOtherWeapon();
     }
 
     // Update is called once per frame
@@ -58,8 +61,12 @@ public class WeaponsScript : MonoBehaviour
     }
 
     public void SwitchWeapon(int weapNo){
-        transform.GetChild(currentWeapon).gameObject.SetActive(false);
-        transform.GetChild(weapNo).gameObject.SetActive(true);
-        currentWeapon = weapNo;
+        // transform.GetChild(currentWeapon).gameObject.SetActive(false);
+        // transform.GetChild(weapNo).gameObject.SetActive(true);
+        if(weapNo != currentWeapon){
+            transform.GetChild(currentWeapon).GetComponent<GunScript>().SelectOtherWeapon();
+            transform.GetChild(weapNo).GetComponent<GunScript>().SelectThisWeapon();
+            currentWeapon = weapNo;
+        }
     }
 }

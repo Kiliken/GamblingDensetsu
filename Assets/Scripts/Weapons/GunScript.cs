@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,7 +16,7 @@ public class GunScript : MonoBehaviour
     public GameObject impactEffect;
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI gunNameText;
-    public GameObject ReloadText;
+    public TextMeshProUGUI ReloadText;
     Animator animator;
     public string gunName = "Gun";
     public float damage = 10f;
@@ -37,12 +38,13 @@ public class GunScript : MonoBehaviour
     private float defaultZoom = 90f;
     public float ADSZoom = 40f;
     public float ADSSpeed = 120f;
+    public bool currentWeapon = false;
 
 
     void Awake(){
         maxAmmo = maxAmmoDefault;
         currentAmmo = maxAmmoDefault;
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
     }
 
 
@@ -55,53 +57,52 @@ public class GunScript : MonoBehaviour
     }
 
 
-    void OnEnable(){
-        // cancel reload
-        isReloading = false;
-        gunNameText.text = gunName;
-        UpdateAmmoText();
-        ReloadText.SetActive(false);
-    }
+    // void OnEnable(){
+    //     // cancel reload
+    //     isReloading = false;
+    //     gunNameText.text = gunName;
+    //     UpdateAmmoText();
+    //     ReloadText.gameObject.SetActive(false);
+    // }
+
 
     // Update is called once per frame
     void Update()
     {
-        // ADS
-        if(Input.GetButton("Fire2") && !isReloading){
-            cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, ADSZoom, ADSSpeed * Time.deltaTime);
-            animator.SetBool("aiming", true);
-        }
-        else if(cam.fieldOfView < defaultZoom){
-            cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, defaultZoom, ADSSpeed * Time.deltaTime);
-            animator.SetBool("aiming", false);
-        }
+        if(currentWeapon){
+            // ADS
+            if(Input.GetButton("Fire2") && !isReloading){
+                cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, ADSZoom, ADSSpeed * Time.deltaTime);
+                animator.SetBool("aiming", true);
+            }
+            else if(cam.fieldOfView < defaultZoom){
+                cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, defaultZoom, ADSSpeed * Time.deltaTime);
+                animator.SetBool("aiming", false);
+            }
 
-
-        if(isReloading){
-            return;
-        }
+            if(isReloading){
+                return;
+            }
             
-        
-        // Shoot
-        if(currentAmmo > 0){
-            if(singleShot && Input.GetButtonDown("Fire1") && Time.time >= nextFire){
-                nextFire = Time.time + fireRate;
-                if(isShotGun)
-                    ShotgunShoot();
-                else
+            // Shoot
+            if(currentAmmo > 0){
+                if(singleShot && Input.GetButtonDown("Fire1") && Time.time >= nextFire){
+                    nextFire = Time.time + fireRate;
+                    if(isShotGun)
+                        ShotgunShoot();
+                    else
+                        Shoot();
+                }
+                else if(!singleShot && Input.GetButton("Fire1") && Time.time >= nextFire){
+                    nextFire = Time.time + fireRate;
                     Shoot();
+                }
             }
-            else if(!singleShot && Input.GetButton("Fire1") && Time.time >= nextFire){
-                nextFire = Time.time + fireRate;
-                Shoot();
+            // Reload
+            if(Input.GetButtonDown("Reload") && currentAmmo != maxAmmo){
+                StartCoroutine(Reload());
             }
         }
-        // Reload
-        if(Input.GetButtonDown("Reload") && currentAmmo != maxAmmo){
-            StartCoroutine(Reload());
-        }
-
-        
     }
 
 
@@ -173,50 +174,96 @@ public class GunScript : MonoBehaviour
     }
 
 
+    // IEnumerator Reload(){
+    //     Debug.Log("Reloading...");
+    //     isReloading = true;
+    //     ReloadText.gameObject.SetActive(true);
+    //     int t = Random.Range(1, 7);
+    //     reloadTime = t;
+    //     Debug.Log(reloadTime + "s reload time");
+    //     yield return new WaitForSeconds(reloadTime);
+    //     #region //ammo dice
+    //     // int c = Random.Range(0, 6);
+    //     // switch(c){
+    //     //     case 0:
+    //     //         maxAmmo = maxAmmoDefault - (int)(maxAmmoDefault * ammoModLarge);
+    //     //         Debug.Log("Dice 1, least ammo");
+    //     //         break;
+    //     //     case 1:
+    //     //         maxAmmo = maxAmmoDefault - (int)(maxAmmoDefault * ammoModSmall);
+    //     //         Debug.Log("Dice 2, less ammo");
+    //     //         break;
+    //     //     case 2:
+    //     //     case 3:
+    //     //         maxAmmo = maxAmmoDefault;
+    //     //         Debug.Log("Dice 3 or 4, normal ammo");
+    //     //         break;
+    //     //     case 4:
+    //     //         maxAmmo = maxAmmoDefault + (int)(maxAmmoDefault * ammoModSmall);
+    //     //         Debug.Log("Dice 5, more ammo");
+    //     //         break;
+    //     //     case 5:
+    //     //         maxAmmo = maxAmmoDefault + (int)(maxAmmoDefault * ammoModLarge);
+    //     //         Debug.Log("Dice 6, most ammo");
+    //     //         break;
+    //     // }
+    //     #endregion
+    //     currentAmmo = maxAmmo;
+    //     UpdateAmmoText();
+    //     isReloading = false;
+    //     ReloadText.gameObject.SetActive(false);
+    //     Debug.Log("Reloaded");
+    // }
+
     IEnumerator Reload(){
         Debug.Log("Reloading...");
         isReloading = true;
-        ReloadText.SetActive(true);
-        int t = Random.Range(1, 7);
-        reloadTime = t;
+        reloadTime = Random.Range(1, 7);
         Debug.Log(reloadTime + "s reload time");
-        yield return new WaitForSeconds(reloadTime);
-        #region //ammo dice
-        // int c = Random.Range(0, 6);
-        // switch(c){
-        //     case 0:
-        //         maxAmmo = maxAmmoDefault - (int)(maxAmmoDefault * ammoModLarge);
-        //         Debug.Log("Dice 1, least ammo");
-        //         break;
-        //     case 1:
-        //         maxAmmo = maxAmmoDefault - (int)(maxAmmoDefault * ammoModSmall);
-        //         Debug.Log("Dice 2, less ammo");
-        //         break;
-        //     case 2:
-        //     case 3:
-        //         maxAmmo = maxAmmoDefault;
-        //         Debug.Log("Dice 3 or 4, normal ammo");
-        //         break;
-        //     case 4:
-        //         maxAmmo = maxAmmoDefault + (int)(maxAmmoDefault * ammoModSmall);
-        //         Debug.Log("Dice 5, more ammo");
-        //         break;
-        //     case 5:
-        //         maxAmmo = maxAmmoDefault + (int)(maxAmmoDefault * ammoModLarge);
-        //         Debug.Log("Dice 6, most ammo");
-        //         break;
-        // }
-        #endregion
+        ReloadText.gameObject.SetActive(true);
+        while(reloadTime > 0){
+            reloadTime -= 1.0f;
+            if(currentWeapon)
+                ReloadText.text = gunName + " Reloading in " + (reloadTime + 1) + "s";
+            yield return new WaitForSeconds(1);
+        }
         currentAmmo = maxAmmo;
-        UpdateAmmoText();
+        if(currentWeapon){
+            UpdateAmmoText();
+            ReloadText.gameObject.SetActive(false);
+        }
         isReloading = false;
-        ReloadText.SetActive(false);
-        Debug.Log("Reloaded");
+        Debug.Log(gunName + " Reloaded");
     }
+
+    public void SelectThisWeapon(){
+        transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(1).gameObject.SetActive(true);
+        currentWeapon = true;
+
+        gunNameText.text = gunName;
+        UpdateAmmoText();
+        if(isReloading){
+            ReloadText.text = gunName + " Reloading in " + (reloadTime + 1) + "s";
+            ReloadText.gameObject.SetActive(true);
+        }
+        else{
+            ReloadText.gameObject.SetActive(false);
+        }
+    }
+
+    public void SelectOtherWeapon(){
+        currentWeapon = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
+        animator.SetBool("aiming", false);
+    }
+
 
     public void UpdateAmmoText(){
         ammoText.text = currentAmmo + "/" + maxAmmo;
     }
+
 
     public void ShootEvent(){
         animator.SetBool("shooting", false);
