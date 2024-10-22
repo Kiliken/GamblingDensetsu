@@ -19,9 +19,14 @@ public class GunScript : MonoBehaviour
     Animator animator;
     public string gunName = "Gun";
     public float damage = 10f;
+    public float critDamage = 20f;
+    public int critChance = 6;
     public float fireRate = 0.1f;
     public float range = 100f;
-    public int maxAmmo = 30;
+    public int maxAmmoDefault = 30;
+    public float ammoModSmall = 0.2f;
+    public float ammoModLarge = 0.5f;
+    private int maxAmmo;
     private int currentAmmo;
     public float reloadTime = 2f;
     private bool isReloading = false;
@@ -33,10 +38,14 @@ public class GunScript : MonoBehaviour
     public float ADSZoom = 40f;
     public float ADSSpeed = 120f;
 
+
     void Awake(){
-        currentAmmo = maxAmmo;
+        maxAmmo = maxAmmoDefault;
+        currentAmmo = maxAmmoDefault;
         this.gameObject.SetActive(false);
     }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +53,7 @@ public class GunScript : MonoBehaviour
         camScript = cam.GetComponent<PlayerCam>();
         currentAmmo = maxAmmo;
     }
+
 
     void OnEnable(){
         // cancel reload
@@ -66,8 +76,11 @@ public class GunScript : MonoBehaviour
             animator.SetBool("aiming", false);
         }
 
-        if(isReloading)
+
+        if(isReloading){
             return;
+        }
+            
         
         // Shoot
         if(currentAmmo > 0){
@@ -108,7 +121,12 @@ public class GunScript : MonoBehaviour
 
             Enemy enemy = hit.transform.GetComponent<Enemy>();
             if(enemy != null){
-                enemy.TakeDamage(damage);
+                if(Random.Range(0, critChance + 1) == 0){
+                    enemy.TakeDamage(critDamage);
+                    Debug.Log("Critical Hit");
+                }
+                else
+                    enemy.TakeDamage(damage);
                 ie.transform.parent = enemy.transform;
             }
             //cam.transform.Rotate(5f, 0, 0);
@@ -140,7 +158,12 @@ public class GunScript : MonoBehaviour
 
                 Enemy enemy = hit.transform.GetComponent<Enemy>();
                 if(enemy != null){
-                    enemy.TakeDamage(damage);
+                    if(Random.Range(0, critChance + 1) == 0){
+                        enemy.TakeDamage(critDamage);
+                        Debug.Log("Critical Hit");
+                    }
+                    else
+                        enemy.TakeDamage(damage);
                     ie.transform.parent = enemy.transform;
                 }
             }
@@ -154,7 +177,36 @@ public class GunScript : MonoBehaviour
         Debug.Log("Reloading...");
         isReloading = true;
         ReloadText.SetActive(true);
+        int t = Random.Range(1, 7);
+        reloadTime = t;
+        Debug.Log(reloadTime + "s reload time");
         yield return new WaitForSeconds(reloadTime);
+        #region //ammo dice
+        // int c = Random.Range(0, 6);
+        // switch(c){
+        //     case 0:
+        //         maxAmmo = maxAmmoDefault - (int)(maxAmmoDefault * ammoModLarge);
+        //         Debug.Log("Dice 1, least ammo");
+        //         break;
+        //     case 1:
+        //         maxAmmo = maxAmmoDefault - (int)(maxAmmoDefault * ammoModSmall);
+        //         Debug.Log("Dice 2, less ammo");
+        //         break;
+        //     case 2:
+        //     case 3:
+        //         maxAmmo = maxAmmoDefault;
+        //         Debug.Log("Dice 3 or 4, normal ammo");
+        //         break;
+        //     case 4:
+        //         maxAmmo = maxAmmoDefault + (int)(maxAmmoDefault * ammoModSmall);
+        //         Debug.Log("Dice 5, more ammo");
+        //         break;
+        //     case 5:
+        //         maxAmmo = maxAmmoDefault + (int)(maxAmmoDefault * ammoModLarge);
+        //         Debug.Log("Dice 6, most ammo");
+        //         break;
+        // }
+        #endregion
         currentAmmo = maxAmmo;
         UpdateAmmoText();
         isReloading = false;

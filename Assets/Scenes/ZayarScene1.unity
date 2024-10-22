@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 0
-  HP: 50
+  HP: 1000
 --- !u!1 &626893294
 GameObject:
   m_ObjectHideFlags: 0

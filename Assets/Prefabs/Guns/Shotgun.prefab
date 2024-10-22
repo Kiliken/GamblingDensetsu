@@ -54,10 +54,14 @@ MonoBehaviour:
   gunNameText: {fileID: 0}
   ReloadText: {fileID: 0}
   gunName: Shotgun
-  damage: 10
+  damage: 4
+  critDamage: 6
+  critChance: 8
   fireRate: 0.8
   range: 10
-  maxAmmo: 6
+  maxAmmoDefault: 6
+  ammoModSmall: 0.2
+  ammoModLarge: 0.5
   reloadTime: 3
   recoil: 6
   singleShot: 1

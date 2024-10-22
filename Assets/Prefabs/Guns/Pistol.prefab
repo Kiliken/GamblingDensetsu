@@ -54,10 +54,14 @@ MonoBehaviour:
   gunNameText: {fileID: 0}
   ReloadText: {fileID: 0}
   gunName: Pistol
-  damage: 10
+  damage: 5
+  critDamage: 7
+  critChance: 6
   fireRate: 0.3
   range: 50
-  maxAmmo: 10
+  maxAmmoDefault: 10
+  ammoModSmall: 0.2
+  ammoModLarge: 0.5
   reloadTime: 2
   recoil: 3
   singleShot: 1
