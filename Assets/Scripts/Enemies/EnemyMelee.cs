@@ -10,6 +10,8 @@ public class EnemyMelee : MonoBehaviour
 
     float timer;
     bool inRange;
+    public float damage = 10f;
+    public float damageModifier = 0f;   //damage + damageModifier
 
     void Start()
     {

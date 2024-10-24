@@ -19,6 +19,8 @@ public class RangedEnemy : MonoBehaviour
 
     public float HP = 50f;
     float timer;
+    public float damage = 10f;
+    public float damageModifier = 0f;   //damage + damageModifier
 
     // Start is called before the first frame update
     void Start()

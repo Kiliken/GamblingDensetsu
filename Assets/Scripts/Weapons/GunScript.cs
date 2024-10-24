@@ -20,6 +20,7 @@ public class GunScript : MonoBehaviour
     Animator animator;
     public string gunName = "Gun";
     public float damage = 10f;
+    public float damageModifier = 0f;
     public float critDamage = 20f;
     public int critChance = 6;
     public float fireRate = 0.1f;
@@ -129,6 +130,8 @@ public class GunScript : MonoBehaviour
                 else
                     enemy.TakeDamage(damage);
                 ie.transform.parent = enemy.transform;
+
+                // gun effects
             }
             //cam.transform.Rotate(5f, 0, 0);
         }
