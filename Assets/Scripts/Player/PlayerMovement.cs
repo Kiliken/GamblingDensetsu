@@ -107,12 +107,12 @@ public class PlayerMovement : MonoBehaviour
         else if (grounded && Input.GetAxisRaw("Sprint") != 0)
         {
             state = MovementState.sprinting;
-            moveSpeed = sprintSpeed;
+            moveSpeed = sprintSpeed + speedModifier;
         }
 
         else if (grounded) {
             state = MovementState.walking;
-            moveSpeed = walkSpeed;
+            moveSpeed = walkSpeed + speedModifier;
         }
 
         else

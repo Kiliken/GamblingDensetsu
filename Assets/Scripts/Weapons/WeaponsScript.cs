@@ -65,7 +65,9 @@ public class WeaponsScript : MonoBehaviour
         // transform.GetChild(weapNo).gameObject.SetActive(true);
         if(weapNo != currentWeapon){
             transform.GetChild(currentWeapon).GetComponent<GunScript>().SelectOtherWeapon();
+            transform.GetChild(currentWeapon).GetComponent<WeaponEffects>().RemoveEffects();
             transform.GetChild(weapNo).GetComponent<GunScript>().SelectThisWeapon();
+            transform.GetChild(weapNo).GetComponent<WeaponEffects>().ApplyEffects();
             currentWeapon = weapNo;
         }
     }

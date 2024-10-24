@@ -26,8 +26,8 @@ public class GunScript : MonoBehaviour
     public float fireRate = 0.1f;
     public float range = 100f;
     public int maxAmmoDefault = 30;
-    public float ammoModSmall = 0.2f;
-    public float ammoModLarge = 0.5f;
+    // public float ammoModSmall = 0.2f;
+    // public float ammoModLarge = 0.5f;
     private int maxAmmo;
     private int currentAmmo;
     public float reloadTime = 2f;
@@ -124,11 +124,11 @@ public class GunScript : MonoBehaviour
             Enemy enemy = hit.transform.GetComponent<Enemy>();
             if(enemy != null){
                 if(Random.Range(0, critChance + 1) == 0){
-                    enemy.TakeDamage(critDamage);
+                    enemy.TakeDamage(critDamage + damageModifier);
                     Debug.Log("Critical Hit");
                 }
                 else
-                    enemy.TakeDamage(damage);
+                    enemy.TakeDamage(damage + damageModifier);
                 ie.transform.parent = enemy.transform;
 
                 // gun effects
@@ -163,11 +163,11 @@ public class GunScript : MonoBehaviour
                 Enemy enemy = hit.transform.GetComponent<Enemy>();
                 if(enemy != null){
                     if(Random.Range(0, critChance + 1) == 0){
-                        enemy.TakeDamage(critDamage);
+                        enemy.TakeDamage(critDamage + damageModifier);
                         Debug.Log("Critical Hit");
                     }
                     else
-                        enemy.TakeDamage(damage);
+                        enemy.TakeDamage(damage + damageModifier);
                     ie.transform.parent = enemy.transform;
                 }
             }

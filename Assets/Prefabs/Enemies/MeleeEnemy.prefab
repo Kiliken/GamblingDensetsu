@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2165260946906563394}
   - component: {fileID: 6074848676229262137}
   - component: {fileID: 1763603917596764789}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeleeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 8562735461823769124}
   - component: {fileID: 2827193734004744418}
   - component: {fileID: 252694725857734301}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,3 +213,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 3
+  damage: 10
+  damageModifier: 0

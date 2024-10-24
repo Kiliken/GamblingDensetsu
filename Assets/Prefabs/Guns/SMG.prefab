@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4024073913886302906}
   - component: {fileID: 8357203268454504176}
+  - component: {fileID: 251275636123690872}
   - component: {fileID: 6070068290747050946}
   m_Layer: 0
   m_Name: SMG
@@ -55,17 +56,38 @@ MonoBehaviour:
   ReloadText: {fileID: 0}
   gunName: SMG
   damage: 2
+  damageModifier: 0
   critDamage: 3
   critChance: 10
   fireRate: 0.1
   range: 100
-  maxAmmo: 30
+  maxAmmoDefault: 30
   reloadTime: 2.5
   recoil: 0.5
   singleShot: 0
   isShotGun: 0
   ADSZoom: 60
   ADSSpeed: 200
+  currentWeapon: 0
+--- !u!114 &251275636123690872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5154910756981628115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9cce6f34394fdc4e9d4d54612b2f59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectTime: 20
+  effectActive: 0
+  activeEffectNo: 0
+  moveSpeedModifier: 3
+  playerSlowBullets: 0
+  enemySlowBullets: 0
+  damageModifier: 2
 --- !u!95 &6070068290747050946
 Animator:
   serializedVersion: 5

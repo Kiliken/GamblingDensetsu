@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2974175844359760471}
   - component: {fileID: 7395530157188502684}
   - component: {fileID: 3647260013423927678}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RangedEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
