@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3ba04175f771404580f5f6a4cd700f8, type: 2}
+  - {fileID: 2100000, guid: ab0a1de1adda4374991f9ee7c8441989, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,3 +147,5 @@ MonoBehaviour:
   fireRate: 6
   reactionTime: 18
   HP: 50
+  damage: 10
+  damageModifier: 0

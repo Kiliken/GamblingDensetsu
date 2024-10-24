@@ -12,10 +12,13 @@ public class EnemyMelee : MonoBehaviour
     bool inRange;
     public float damage = 10f;
     public float damageModifier = 0f;   //damage + damageModifier
+    Player player;
 
     void Start()
     {
         timer = 0f;
+        if (!(player = GameObject.Find("Player").GetComponent<Player>()))
+            Debug.LogError("NO OBJECT PLAYER FOUND");
     }
 
     private void Update()
@@ -25,13 +28,17 @@ public class EnemyMelee : MonoBehaviour
             timer += 1 * Time.deltaTime;
             if(timer > 1f)
             {
-                Debug.Log("GotHitten");
+                Attack(damage);
                 timer = 0f;
             }
         } else
         {
             timer = 0f;
         }
+    }
+
+    private void Attack(float damage) {
+        player.TakeDamage(damage);
     }
 
     private void OnTriggerEnter(Collider other)

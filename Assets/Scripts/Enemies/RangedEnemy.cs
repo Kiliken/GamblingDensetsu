@@ -14,6 +14,7 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] float fireRate;
     [SerializeField] float reactionTime;
 
+    Player player;
     LayerMask mask = -1;
 
     public float HP = 50f;
@@ -26,8 +27,13 @@ public class RangedEnemy : MonoBehaviour
     {
         timer = reactionTime;
         enemyAI = this.GetComponent<NavMeshAgent>();
+
         if (!(playerPos = GameObject.Find("Player").GetComponent<Transform>()))
             Debug.LogError("NO OBJECT PLAYER FOUND");
+
+        if (!(player = GameObject.Find("Player").GetComponent<Player>()))
+            Debug.LogError("NO OBJECT PLAYER FOUND");
+
     }
 
     // Update is called once per frame
@@ -47,7 +53,8 @@ public class RangedEnemy : MonoBehaviour
             timer += -0.25f;
             if (timer <= 0)
             {
-                Debug.Log("BANG!!!");
+                Shoot(damage, 80);
+                Debug.Log("BANG!");
                 timer = fireRate;
             }
         }
@@ -65,6 +72,10 @@ public class RangedEnemy : MonoBehaviour
     }
 
 
+    private void Shoot(float damage, int accuracy) { 
+        if(Random.Range(1,100) <= accuracy)
+            player.TakeDamage(damage);
+    }
     public void TakeDamage(float dmg){
         HP -= dmg;
         if(HP <= 0f){
