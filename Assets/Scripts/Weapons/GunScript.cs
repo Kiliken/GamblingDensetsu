@@ -113,7 +113,7 @@ public class GunScript : MonoBehaviour
         UpdateAmmoText();
 
         RaycastHit hit;
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range)){
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range, LayerMask.GetMask("Ground", "Enemy"))){
             Debug.Log(hit.transform.name);
             //Debug.Log(cam.transform.forward);
 
@@ -151,7 +151,7 @@ public class GunScript : MonoBehaviour
             cam.transform.forward + cam.transform.right * Random.Range(-0.2f, -0.01f) + cam.transform.up * Random.Range(-0.2f, -0.01f), cam.transform.forward + cam.transform.right * Random.Range(-0.2f, -0.01f) + cam.transform.up * Random.Range(0.01f, 0.2f)};
         for(int i = 0; i < 6; i++){
             RaycastHit hit;
-            if(Physics.Raycast(cam.transform.position, shotgunDir[i].normalized, out hit, range)){
+            if(Physics.Raycast(cam.transform.position, shotgunDir[i].normalized, out hit, range, LayerMask.GetMask("Ground", "Enemy"))){
                 //Debug.Log(cam.transform.forward + shotgunDir[i]);
 
                 GameObject ie = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));

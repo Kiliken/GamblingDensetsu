@@ -16,7 +16,7 @@ public class WeaponsScript : MonoBehaviour
         transform.GetChild(0).GetComponent<GunScript>().SelectThisWeapon();
         transform.GetChild(1).GetComponent<GunScript>().SelectOtherWeapon();
         transform.GetChild(2).GetComponent<GunScript>().SelectOtherWeapon();
-        transform.GetChild(3).GetComponent<GunScript>().SelectOtherWeapon();
+        //transform.GetChild(3).GetComponent<GunScript>().SelectOtherWeapon();
     }
 
     // Update is called once per frame
