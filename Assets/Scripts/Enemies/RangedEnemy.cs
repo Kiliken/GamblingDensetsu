@@ -14,7 +14,6 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] float fireRate;
     [SerializeField] float reactionTime;
 
-    bool hasLineOfSight = false;
     LayerMask mask = -1;
 
     public float HP = 50f;
