@@ -152,9 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcf18a8db511a04e80bbe4a971fdbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPoint: []
-  enemy: []
-  spawnTime: 0
 --- !u!4 &105841751
 Transform:
   m_ObjectHideFlags: 0
@@ -1106,7 +1103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd23501adb33c3d4c99bce6fcb99e2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1
   HP: 50
 --- !u!1 &1821217553
 GameObject:
