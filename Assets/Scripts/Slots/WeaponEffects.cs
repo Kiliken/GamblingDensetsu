@@ -11,6 +11,7 @@ public class WeaponEffects : MonoBehaviour
     PlayerMovement playerMovement;
     GunScript gun;
     SlotsUI slotsUI;
+    EnemyManager enemyManager;
     public float effectTime = 20f;
     private float effectTimer = 0f;
     public bool effectActive = false;
@@ -34,6 +35,7 @@ public class WeaponEffects : MonoBehaviour
         playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         gun = GetComponent<GunScript>();
         slotsUI = GameObject.Find("Slots").GetComponent<SlotsUI>();
+        enemyManager = GameObject.Find("Enemies").GetComponent<EnemyManager>();
     }
 
     // Update is called once per frame
@@ -115,9 +117,11 @@ public class WeaponEffects : MonoBehaviour
                     break;
                 case 2: // enemy speed down/up
                     if(isBuff){
+                        enemyManager.ApplyEnemySpeed((-moveSpeedModifier + 1.5f) * effectMultiplier);
                         slotsUI.SetEffectText("Enemy Speed " + minus, true);
                     }
                     else{
+                        enemyManager.ApplyEnemySpeed((moveSpeedModifier - 1.5f) * effectMultiplier);
                         slotsUI.SetEffectText("Enemy Speed " + plus, false);
                     }
                     break;
@@ -133,9 +137,11 @@ public class WeaponEffects : MonoBehaviour
                     break;
                 case 4: // enemy damage down/up
                     if(isBuff){
+                        playerScript.damageReceivedModifier = -damageModifier * effectMultiplier;
                         slotsUI.SetEffectText("Enemy Damage " + minus, true);
                     }
                     else{
+                        playerScript.damageReceivedModifier = damageModifier * effectMultiplier;
                         slotsUI.SetEffectText("Enemy Damage " + plus, false);
                     }
                     break;
@@ -149,15 +155,17 @@ public class WeaponEffects : MonoBehaviour
         if(activeEffectNo > 0){
             switch(activeEffectNo){
                 case 1: // player speed up/down
-                    playerMovement.speedModifier = 0;
+                    playerMovement.speedModifier = 0f;
                     break;
                 case 2: // enemy speed down/up
+                    enemyManager.ApplyEnemySpeed(0f);
                     Debug.Log("Enemy speed effect removed");
                     break;
                 case 3: // player damage up/down
-                    gun.damageModifier = 0;
+                    gun.damageModifier = 0f;
                     break;
                 case 4: // enemy damage down/up
+                    playerScript.damageReceivedModifier = 0f;
                     Debug.Log("Enemy damage effect removed");
                     break;
             }

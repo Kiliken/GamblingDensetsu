@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public float MaxHP = 100f;
     public float HP;
+    public float damageReceivedModifier = 0f;
 
     
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
 
 
     public void TakeDamage(float dmg){
-        HP -= dmg;
+        HP -= Mathf.Max(0, dmg + damageReceivedModifier);
         if(HP <= 0f){
             Death();
         }

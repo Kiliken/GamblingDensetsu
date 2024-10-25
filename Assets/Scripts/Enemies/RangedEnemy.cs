@@ -10,6 +10,8 @@ public class RangedEnemy : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float attackRange;
     NavMeshAgent enemyAI;
+    Enemy enemyScript;
+
     Transform playerPos;
     [SerializeField] float fireRate;
     [SerializeField] float reactionTime;
@@ -25,6 +27,7 @@ public class RangedEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemyScript = GetComponent<Enemy>();
         timer = reactionTime;
         enemyAI = this.GetComponent<NavMeshAgent>();
 
@@ -62,6 +65,7 @@ public class RangedEnemy : MonoBehaviour
         {
             timer = reactionTime;
             enemyAI.SetDestination(GetRadius(transform.position, playerPos.position, 1f));
+            enemyAI.speed = Mathf.Max(1, enemyScript.moveSpeed + enemyScript.speedModifier);
         }
     }
 
