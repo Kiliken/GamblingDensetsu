@@ -1010,15 +1010,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcf18a8db511a04e80bbe4a971fdbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPoint:
-  - {fileID: 962844724}
-  - {fileID: 1632372885}
-  - {fileID: 1980483684}
-  - {fileID: 328055917}
-  enemy:
-  - {fileID: 7214017746145842896, guid: aa95daa20f0e1e94d86fe2b6c62e820f, type: 3}
-  - {fileID: 3694903647343167033, guid: 76549e53df5c12b438fe00a83b35f276, type: 3}
-  spawnTime: 60
 --- !u!4 &105841751
 Transform:
   m_ObjectHideFlags: 0
@@ -2908,6 +2899,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 991927426}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &317803729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 317803730}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &317803730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317803729}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &322112796
 PrefabInstance:
@@ -4801,6 +4823,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5915865803010411655, guid: 90a6f78b5aa8fa645b599f9b351baf26, type: 3}
   m_PrefabInstance: {fileID: 399250734}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &551170296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3694903647343167033, guid: 76549e53df5c12b438fe00a83b35f276, type: 3}
+  m_PrefabInstance: {fileID: 1340530450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &551170297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551170296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd23501adb33c3d4c99bce6fcb99e2d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 50
 --- !u!1001 &553146026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6162,6 +6202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 745440038}
+  - component: {fileID: 745440039}
   m_Layer: 0
   m_Name: EnemySpawns
   m_TagString: Untagged
@@ -6188,6 +6229,28 @@ Transform:
   - {fileID: 328055917}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &745440039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745440037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e13d6269af00c449bf3cadc909e66a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawnPoint:
+  - {fileID: 962844724}
+  - {fileID: 1632372885}
+  - {fileID: 1980483684}
+  - {fileID: 328055917}
+  enemy:
+  - {fileID: 7214017746145842896, guid: aa95daa20f0e1e94d86fe2b6c62e820f, type: 3}
+  - {fileID: 3694903647343167033, guid: 76549e53df5c12b438fe00a83b35f276, type: 3}
+  spawnTime: 30
+  enemyContainer: {fileID: 317803729}
 --- !u!4 &757971743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5915865803010411655, guid: 90a6f78b5aa8fa645b599f9b351baf26, type: 3}
@@ -10811,7 +10874,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3694903647343167033, guid: 76549e53df5c12b438fe00a83b35f276, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 551170297}
   m_SourcePrefab: {fileID: 100100000, guid: 76549e53df5c12b438fe00a83b35f276, type: 3}
 --- !u!4 &1340981111 stripped
 Transform:
@@ -14476,7 +14542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd23501adb33c3d4c99bce6fcb99e2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1
   HP: 50
 --- !u!1001 &1802961965
 PrefabInstance:
@@ -16796,3 +16861,4 @@ SceneRoots:
   - {fileID: 1800950758}
   - {fileID: 1340530450}
   - {fileID: 745440038}
+  - {fileID: 317803730}
