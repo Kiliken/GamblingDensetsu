@@ -9,5 +9,6 @@ public class GameController : MonoBehaviour
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
+        Cursor.visible = false;
     }
 }

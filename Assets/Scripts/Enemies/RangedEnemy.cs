@@ -13,12 +13,15 @@ public class RangedEnemy : MonoBehaviour
     Enemy enemyScript;
 
     Transform playerPos;
+    [Header("Fire")]
     [SerializeField] float fireRate;
     [SerializeField] float reactionTime;
+    [SerializeField] ParticleSystem muzzleFlash;
 
     Player player;
     LayerMask mask = -1;
 
+    [Space(12)]
     public float HP = 50f;
     float timer;
     public float damage = 10f;
@@ -53,6 +56,7 @@ public class RangedEnemy : MonoBehaviour
             enemyAI.ResetPath();
             //Debug.Log("See ya");
             //shoot
+            transform.LookAt(playerPos);
             timer += -0.25f;
             if (timer <= 0)
             {
@@ -76,8 +80,9 @@ public class RangedEnemy : MonoBehaviour
     }
 
 
-    private void Shoot(float damage, int accuracy) { 
-        if(Random.Range(1,100) <= accuracy)
+    private void Shoot(float damage, int accuracy) {
+        muzzleFlash.Play();
+        if (Random.Range(1, 100) <= accuracy)
             player.TakeDamage(damage);
     }
     public void TakeDamage(float dmg){
