@@ -145,6 +145,7 @@ public class WeaponEffects : MonoBehaviour
                         slotsUI.SetEffectText("敵ダメージ " + plus, false);
                     }
                     break;
+                //reminder to me - write object buff here
             }
             effectActive = true;
         }

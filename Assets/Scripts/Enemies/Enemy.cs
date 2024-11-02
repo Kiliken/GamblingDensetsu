@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float HP = 50f;
     public float moveSpeed = 3.5f;
     public float speedModifier = 0f;
+
     private void Start()
     {
         
@@ -22,5 +23,10 @@ public class Enemy : MonoBehaviour
 
     public void Death(){
         Destroy(gameObject);
+    }
+
+    public GameObject GetEnemyObj()
+    {
+        return this.gameObject;
     }
 }
