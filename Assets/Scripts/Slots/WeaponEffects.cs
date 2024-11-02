@@ -108,41 +108,41 @@ public class WeaponEffects : MonoBehaviour
                 case 1: // player speed up/down
                     if(isBuff){
                         playerMovement.speedModifier = moveSpeedModifier * effectMultiplier;
-                        slotsUI.SetEffectText("Player Speed " + plus, true);
+                        slotsUI.SetEffectText("プレイヤー速度 " + plus, true);
                     }
                     else{
                         playerMovement.speedModifier = -moveSpeedModifier * effectMultiplier;
-                        slotsUI.SetEffectText("Player Speed " + minus, false);
+                        slotsUI.SetEffectText("プレイヤー速度 " + minus, false);
                     }
                     break;
                 case 2: // enemy speed down/up
                     if(isBuff){
                         enemyManager.ApplyEnemySpeed((-moveSpeedModifier + 1.5f) * effectMultiplier);
-                        slotsUI.SetEffectText("Enemy Speed " + minus, true);
+                        slotsUI.SetEffectText("敵速度 " + minus, true);
                     }
                     else{
                         enemyManager.ApplyEnemySpeed((moveSpeedModifier - 1.5f) * effectMultiplier);
-                        slotsUI.SetEffectText("Enemy Speed " + plus, false);
+                        slotsUI.SetEffectText("敵速度 " + plus, false);
                     }
                     break;
                 case 3: // player damage up/down
                     if(isBuff){
                         gun.damageModifier = damageModifier * effectMultiplier;
-                        slotsUI.SetEffectText("Player Damage " + plus, true);
+                        slotsUI.SetEffectText("プレイヤーダメージ " + plus, true);
                     }
                     else{
                         gun.damageModifier = -damageModifier * effectMultiplier;
-                        slotsUI.SetEffectText("Player Damage " + minus, false);
+                        slotsUI.SetEffectText("プレイヤーダメージ " + minus, false);
                     }
                     break;
                 case 4: // enemy damage down/up
                     if(isBuff){
                         playerScript.damageReceivedModifier = -damageModifier * effectMultiplier;
-                        slotsUI.SetEffectText("Enemy Damage " + minus, true);
+                        slotsUI.SetEffectText("敵ダメージ " + minus, true);
                     }
                     else{
                         playerScript.damageReceivedModifier = damageModifier * effectMultiplier;
-                        slotsUI.SetEffectText("Enemy Damage " + plus, false);
+                        slotsUI.SetEffectText("敵ダメージ " + plus, false);
                     }
                     break;
             }

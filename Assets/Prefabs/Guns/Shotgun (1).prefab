@@ -54,7 +54,7 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   gunNameText: {fileID: 0}
   ReloadText: {fileID: 0}
-  gunName: Shotgun
+  gunName: "\u6563\u5F3E\u9283"
   damage: 4
   damageModifier: 0
   critDamage: 6

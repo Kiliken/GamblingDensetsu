@@ -227,7 +227,7 @@ public class GunScript : MonoBehaviour
         while(reloadTime > 0){
             reloadTime -= 1.0f;
             if(currentWeapon)
-                ReloadText.text = gunName + " Reloading in " + (reloadTime + 1) + "s";
+                ReloadText.text = gunName + " リロード中... " + (reloadTime + 1) + "s";
             yield return new WaitForSeconds(1);
         }
         currentAmmo = maxAmmo;
@@ -247,7 +247,7 @@ public class GunScript : MonoBehaviour
         gunNameText.text = gunName;
         UpdateAmmoText();
         if(isReloading){
-            ReloadText.text = gunName + " Reloading in " + (reloadTime + 1) + "s";
+            ReloadText.text = gunName + " リロード中... " + (reloadTime + 1) + "s";
             ReloadText.gameObject.SetActive(true);
         }
         else{

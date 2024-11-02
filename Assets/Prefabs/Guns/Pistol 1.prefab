@@ -54,7 +54,7 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   gunNameText: {fileID: 0}
   ReloadText: {fileID: 0}
-  gunName: Pistol
+  gunName: "\u30D4\u30B9\u30C8\u30EB"
   damage: 5
   damageModifier: 0
   critDamage: 7
