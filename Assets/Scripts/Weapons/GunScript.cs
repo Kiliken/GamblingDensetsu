@@ -26,8 +26,8 @@ public class GunScript : MonoBehaviour
     public float fireRate = 0.1f;
     public float range = 100f;
     public int maxAmmoDefault = 30;
-    // public float ammoModSmall = 0.2f;
-    // public float ammoModLarge = 0.5f;
+    public float ammoModSmall = 0.2f;
+    public float ammoModLarge = 0.5f;
     private int maxAmmo;
     private int currentAmmo;
     public float reloadTime = 2f;
@@ -39,10 +39,13 @@ public class GunScript : MonoBehaviour
     private float defaultZoom = 90f;
     public float ADSZoom = 40f;
     public float ADSSpeed = 120f;
+    public float aimSensDefault = 400f;
+    public float aimSensADS = 200f;
     public bool currentWeapon = false;
 
 
     void Awake(){
+        animator = GetComponent<Animator>();
         maxAmmo = maxAmmoDefault;
         currentAmmo = maxAmmoDefault;
         //this.gameObject.SetActive(false);
@@ -52,7 +55,7 @@ public class GunScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        
         camScript = cam.GetComponent<PlayerCam>();
         currentAmmo = maxAmmo;
     }
@@ -75,10 +78,12 @@ public class GunScript : MonoBehaviour
             if(Input.GetButton("Fire2") && !isReloading){
                 cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, ADSZoom, ADSSpeed * Time.deltaTime);
                 animator.SetBool("aiming", true);
+                camScript.sensX = camScript.sensY = aimSensADS;
             }
             else if(cam.fieldOfView < defaultZoom){
                 cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, defaultZoom, ADSSpeed * Time.deltaTime);
                 animator.SetBool("aiming", false);
+                camScript.sensX = camScript.sensY = aimSensDefault;
             }
 
             if(isReloading){
@@ -223,6 +228,18 @@ public class GunScript : MonoBehaviour
         isReloading = true;
         reloadTime = Random.Range(1, 7);
         Debug.Log(reloadTime + "s reload time");
+
+        // ammo bonus
+        // 5,6s - 50% more ammo, 3,4s - 20% more ammo
+        if(reloadTime > 4){
+            maxAmmo = maxAmmoDefault + (int)(maxAmmoDefault * ammoModLarge);
+        }
+        else if(reloadTime > 2 && reloadTime < 5){
+            maxAmmo = maxAmmoDefault + (int)(maxAmmoDefault * ammoModSmall);
+        }
+        else
+            maxAmmo = maxAmmoDefault;
+        
         ReloadText.gameObject.SetActive(true);
         while(reloadTime > 0){
             reloadTime -= 1.0f;
