@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class EffectController : MonoBehaviour
 {
-    class Buffs {
-        public GameObject buffPrefab;
-        public string buffName;
-    };
 
-    List<Buffs> buffsList;
+    [SerializeField] List<GameObject> effectPrefabs;
 
+    public int effNum = -1;
     GameObject newEffect;
+    
 
 
     // Start is called before the first frame update
@@ -26,11 +24,14 @@ public class EffectController : MonoBehaviour
         
     }
 
-    public void ApplyEffect(int effNum, Enemy enemy)
+    public void ApplyEffect(Enemy enemy)
     {
+        if (effNum == -1)
+            return;
+
         GameObject enemyObj = enemy.GetEnemyObj();
-        if (!enemyObj.transform.Find(buffsList[effNum].buffName)) {
-            newEffect = Instantiate(buffsList[effNum].buffPrefab,enemyObj.transform);
+        if (!enemyObj.transform.Find($"{effectPrefabs[effNum].name}(Clone)")) {
+            newEffect = Instantiate(effectPrefabs[effNum],enemyObj.transform);
             newEffect.transform.parent = enemyObj.transform;
         }
     }

@@ -12,6 +12,7 @@ public class WeaponEffects : MonoBehaviour
     GunScript gun;
     SlotsUI slotsUI;
     EnemyManager enemyManager;
+    EffectController effectController;
     public float effectTime = 20f;
     private float effectTimer = 0f;
     public bool effectActive = false;
@@ -19,7 +20,7 @@ public class WeaponEffects : MonoBehaviour
     // 1:player speed up/down, 2:enemy speed down/up, 3:player damage up/down, 4: enemy damage down/up
     private bool isBuff = true;
     private float effectMultiplier = 1f;
-    private int maxEffectNo = 4;
+    private int maxEffectNo = 5;
     // movement speed
     public float moveSpeedModifier = 3f;
     public bool playerSlowBullets = false;
@@ -36,6 +37,7 @@ public class WeaponEffects : MonoBehaviour
         gun = GetComponent<GunScript>();
         slotsUI = GameObject.Find("Slots").GetComponent<SlotsUI>();
         enemyManager = GameObject.Find("Enemies").GetComponent<EnemyManager>();
+        effectController = GameObject.Find("Weapons").GetComponent<EffectController>();
     }
 
     // Update is called once per frame
@@ -145,7 +147,19 @@ public class WeaponEffects : MonoBehaviour
                         slotsUI.SetEffectText("敵ダメージ " + plus, false);
                     }
                     break;
-                //reminder to me - write object buff here
+                case 5: // will o wisp
+                    if (isBuff)
+                    {
+                        effectController.effNum = 0;
+                        slotsUI.SetEffectText("Will'o " + minus, true);
+                    }
+                    else
+                    {
+                        effectController.effNum = 1;
+                        slotsUI.SetEffectText("Will'o " + plus, false);
+                    }
+                    break;
+                    
             }
             effectActive = true;
         }
@@ -168,6 +182,10 @@ public class WeaponEffects : MonoBehaviour
                 case 4: // enemy damage down/up
                     playerScript.damageReceivedModifier = 0f;
                     Debug.Log("Enemy damage effect removed");
+                    break;
+                case 5:
+                    effectController.effNum = -1;
+                    Debug.Log("Will o wisp effect removed");
                     break;
             }
             slotsUI.HideSlots();

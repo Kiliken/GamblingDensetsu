@@ -15703,6 +15703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74e9873662f11546acebfc223b8ea33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectPrefabs:
+  - {fileID: 2189086697460161940, guid: 8dddcbec68bf3dc43aeebcb5038121eb, type: 3}
+  - {fileID: 2189086697460161940, guid: 24ce799ec43dea0419ce93bd0aa02c84, type: 3}
+  effNum: -1
 --- !u!1 &1980483683
 GameObject:
   m_ObjectHideFlags: 0

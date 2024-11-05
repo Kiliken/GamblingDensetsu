@@ -12,6 +12,7 @@ public class GunScript : MonoBehaviour
 {
     public Camera cam;
     PlayerCam camScript;
+    EffectController effectController;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
     public TextMeshProUGUI ammoText;
@@ -55,7 +56,7 @@ public class GunScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        effectController = GameObject.Find("Weapons").GetComponent<EffectController>();
         camScript = cam.GetComponent<PlayerCam>();
         currentAmmo = maxAmmo;
     }
@@ -136,7 +137,7 @@ public class GunScript : MonoBehaviour
                     enemy.TakeDamage(damage + damageModifier);
                 ie.transform.parent = enemy.transform;
 
-                // gun effects
+                effectController.ApplyEffect(enemy);
             }
             //cam.transform.Rotate(5f, 0, 0);
         }
@@ -174,6 +175,8 @@ public class GunScript : MonoBehaviour
                     else
                         enemy.TakeDamage(damage + damageModifier);
                     ie.transform.parent = enemy.transform;
+
+                    effectController.ApplyEffect(enemy);
                 }
             }
         }
