@@ -127,19 +127,30 @@ public class GunScript : MonoBehaviour
             GameObject ie = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(ie, 2f);
 
-            Enemy enemy = hit.transform.GetComponent<Enemy>();
-            if(enemy != null){
-                if(Random.Range(0, critChance + 1) == 0){
+            if(hit.transform.tag == "CritSpot"){
+                Enemy enemy = hit.transform.parent.GetComponent<Enemy>();
+                if(enemy != null){
                     enemy.TakeDamage(critDamage + damageModifier);
-                    Debug.Log("Critical Hit");
-                }
-                else
-                    enemy.TakeDamage(damage + damageModifier);
-                ie.transform.parent = enemy.transform;
+                    Debug.Log(" Crit Spot Critical Hit");
 
-                effectController.ApplyEffect(enemy);
+                    ie.transform.parent = enemy.transform;
+                    effectController.ApplyEffect(enemy);
+                }
             }
-            //cam.transform.Rotate(5f, 0, 0);
+            else{
+                Enemy enemy = hit.transform.GetComponent<Enemy>();
+                if(enemy != null){
+                    if(Random.Range(0, critChance + 1) == 0){
+                        enemy.TakeDamage(critDamage + damageModifier);
+                        Debug.Log("Critical Hit");
+                    }
+                    else
+                        enemy.TakeDamage(damage + damageModifier);
+
+                    ie.transform.parent = enemy.transform;
+                    effectController.ApplyEffect(enemy);
+                }
+            }
         }
 
         camScript.recoil += recoil;
@@ -166,17 +177,29 @@ public class GunScript : MonoBehaviour
                 GameObject ie = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(ie, 2f);
 
-                Enemy enemy = hit.transform.GetComponent<Enemy>();
-                if(enemy != null){
-                    if(Random.Range(0, critChance + 1) == 0){
+                if(hit.transform.tag == "CritSpot"){
+                    Enemy enemy = hit.transform.parent.GetComponent<Enemy>();
+                    if(enemy != null){
                         enemy.TakeDamage(critDamage + damageModifier);
-                        Debug.Log("Critical Hit");
-                    }
-                    else
-                        enemy.TakeDamage(damage + damageModifier);
-                    ie.transform.parent = enemy.transform;
+                        Debug.Log("Crit Spot Critical Hit");
 
-                    effectController.ApplyEffect(enemy);
+                        ie.transform.parent = enemy.transform;
+                        effectController.ApplyEffect(enemy);
+                    }
+                }
+                else{
+                    Enemy enemy = hit.transform.GetComponent<Enemy>();
+                    if(enemy != null){
+                        if(Random.Range(0, critChance + 1) == 0){
+                            enemy.TakeDamage(critDamage + damageModifier);
+                            Debug.Log("Critical Hit");
+                        }
+                        else
+                            enemy.TakeDamage(damage + damageModifier);
+
+                        ie.transform.parent = enemy.transform;
+                        effectController.ApplyEffect(enemy);
+                    }
                 }
             }
         }
