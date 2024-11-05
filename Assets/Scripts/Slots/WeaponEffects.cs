@@ -148,15 +148,25 @@ public class WeaponEffects : MonoBehaviour
                     }
                     break;
                 case 5: // will o wisp
-                    if (isBuff)
+                    switch (true)
                     {
-                        effectController.effNum = 0;
-                        slotsUI.SetEffectText("Will'o " + minus, true);
-                    }
-                    else
-                    {
-                        effectController.effNum = 1;
-                        slotsUI.SetEffectText("Will'o " + plus, false);
+                        case true when (isBuff && effectMultiplier == 1.5f):
+                            effectController.effNum = 1;
+                            slotsUI.SetEffectText("Will'o " + plus, true);
+                            break;
+                        case true when (isBuff):
+                            effectController.effNum = 2;
+                            slotsUI.SetEffectText("Will'o " + plus, true);
+                            break;
+                        case true when (effectMultiplier == 1.5f):
+                            effectController.effNum = 0;
+                            slotsUI.SetEffectText("Will'o " + minus, false);
+                            break;
+                        default:
+                            effectController.effNum = 2;
+                            slotsUI.SetEffectText("Will'o " + minus, false);
+                            break;
+                    
                     }
                     break;
                     

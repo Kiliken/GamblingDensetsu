@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class WillOWisp : MonoBehaviour
 {
-    float timer = 5;
+    float timer = 3;
     [SerializeField] int effectType;
+    [SerializeField] GameObject explosionParticle;
+    
+
+    List<Enemy> enemiesInRange = new List<Enemy>();
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,7 +25,52 @@ public class WillOWisp : MonoBehaviour
             timer -= Time.deltaTime;
         }
         else {
-            Destroy(gameObject);
+            WillOEffect();
         }
     }
+
+    void WillOEffect() {
+        Instantiate(explosionParticle, this.transform.position, Quaternion.identity);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5f);
+        switch (effectType) {
+            case 0:
+                
+                foreach (Collider hitCollider in hitColliders)
+                {
+                    if (hitCollider.gameObject.GetComponent<Enemy>() != null) { 
+                        Enemy enemy = hitCollider.gameObject.GetComponent<Enemy>();
+                        enemy.TakeDamage(10);
+                    }
+                }
+                break;
+            case 1:
+                foreach (Collider hitCollider in hitColliders)
+                {
+                    if (hitCollider.gameObject.GetComponent<Player>() != null)
+                    {
+                        Player player = GameObject.Find("Player").GetComponent<Player>();
+                        player.TakeDamage(10);
+                    }
+                }
+                break;
+            case 2:
+                foreach (Collider hitCollider in hitColliders)
+                {
+                    if (hitCollider.gameObject.GetComponent<Player>() != null)
+                    {
+                        Player player = GameObject.Find("Player").GetComponent<Player>();
+                        player.TakeDamage(10);
+                    }
+                    if (hitCollider.gameObject.GetComponent<Enemy>() != null)
+                    {
+                        Enemy enemy = hitCollider.gameObject.GetComponent<Enemy>();
+                        enemy.TakeDamage(10);
+                    }
+                }
+                break;
+        }
+        Destroy(gameObject);
+    }
+
+    
 }

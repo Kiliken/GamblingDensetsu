@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2877103408059379681}
   - component: {fileID: 4647078657548951670}
   m_Layer: 0
-  m_Name: WilloGood
+  m_Name: WilloNeurtal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bde792749b4bb34195caad1d59db68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectType: 0
+  effectType: 2
   explosionParticle: {fileID: 7704468757245241460, guid: 48889d68c7d4d0a46b1126af93fa16fa, type: 3}
 --- !u!1 &7463449499902557458
 GameObject:
