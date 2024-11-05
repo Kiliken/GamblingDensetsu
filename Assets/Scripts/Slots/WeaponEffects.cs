@@ -13,8 +13,8 @@ public class WeaponEffects : MonoBehaviour
     SlotsUI slotsUI;
     EnemyManager enemyManager;
     EffectController effectController;
-    public float effectTime = 20f;
-    private float effectTimer = 0f;
+    public float effectTime = 30f;
+    private float effectTimer = 30f;
     public bool effectActive = false;
     public int activeEffectNo = 0;  // 0 = none, 1,2,3... - effects
     // 1:player speed up/down, 2:enemy speed down/up, 3:player damage up/down, 4: enemy damage down/up
@@ -44,26 +44,33 @@ public class WeaponEffects : MonoBehaviour
     void Update()
     {
         if(effectActive){
-            if(effectTimer < effectTime){
-                effectTimer += Time.deltaTime;
-
-                if(effectTimer >= 5 && gun.currentWeapon){
-                    slotsUI.HideSlots();
+            if(effectTimer > 0){
+                effectTimer -= Time.deltaTime;
+                if(gun.currentWeapon){
+                    slotsUI.effectTimerBar.fillAmount = effectTimer / effectTime;
+                    if(effectTimer <= 25)
+                        slotsUI.HideSlots();
                 }
             }
             else{
                 if(gun.currentWeapon)
                     RemoveEffects();
                 activeEffectNo = 0;
-                effectTimer = 0;
+                effectTimer = effectTime;
                 effectActive = false;
                 Debug.Log(gun.gunName + " Effect time out. Slots usable.");
             }
         }
         if(gun.currentWeapon){
-            if(Input.GetButtonDown("PullSlots") && effectTimer == 0){
-                // pull slots
-                PullSlots();
+            if(Input.GetButtonDown("PullSlots")){
+                if(effectTimer == effectTime){
+                    // pull slots
+                    PullSlots();
+                }
+                else if(effectActive && isBuff && effectMultiplier == 1){
+                    Reroll();
+                }
+                
             }
         }
         
@@ -97,6 +104,31 @@ public class WeaponEffects : MonoBehaviour
         ApplyEffects();
     }
 
+
+    // reroll for greater buff/debuff
+    private void Reroll(){
+        effectMultiplier = 1.5f;
+        // greater buff
+        if(Random.Range(0, 2) == 0){
+            slotsUI.ChangeSlotIcon(0, 1);
+            slotsUI.ChangeSlotIcon(1, 1);
+            slotsUI.ChangeSlotIcon(2, 1);
+            ApplyEffects();
+            Debug.Log("Rerolled greater buff");
+        }
+        // greater debuff
+        else{
+            slotsUI.ChangeSlotIcon(0, 0);
+            slotsUI.ChangeSlotIcon(1, 0);
+            slotsUI.ChangeSlotIcon(2, 0);
+            isBuff = false;
+            ApplyEffects();
+            Debug.Log("Rerolled greater debuff");
+        }
+        effectTimer = 29.99f;
+        slotsUI.SetRerollText(false);
+    }
+
     public void ApplyEffects(){
         if(activeEffectNo > 0){
             String plus = "+";
@@ -105,6 +137,8 @@ public class WeaponEffects : MonoBehaviour
                 plus = "++";
                 minus = "--";
             }
+            else if(isBuff)
+                slotsUI.SetRerollText(true);
                 
             switch(activeEffectNo){
                 case 1: // player speed up/down
@@ -172,6 +206,7 @@ public class WeaponEffects : MonoBehaviour
                     
             }
             effectActive = true;
+            slotsUI.SetEffectTimeBar(true);
         }
         
     }
@@ -200,6 +235,8 @@ public class WeaponEffects : MonoBehaviour
             }
             slotsUI.HideSlots();
             slotsUI.HideEffectText();
+            slotsUI.SetRerollText(false);
+            slotsUI.SetEffectTimeBar(false);
         }
         
     }

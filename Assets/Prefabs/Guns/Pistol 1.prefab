@@ -62,12 +62,16 @@ MonoBehaviour:
   fireRate: 0.3
   range: 50
   maxAmmoDefault: 10
+  ammoModSmall: 0.2
+  ammoModLarge: 0.5
   reloadTime: 2
   recoil: 3
   singleShot: 1
   isShotGun: 0
   ADSZoom: 60
   ADSSpeed: 200
+  aimSensDefault: 400
+  aimSensADS: 200
   currentWeapon: 0
 --- !u!114 &965988414264451352
 MonoBehaviour:
@@ -81,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cce6f34394fdc4e9d4d54612b2f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectTime: 20
+  effectTime: 30
   effectActive: 0
   activeEffectNo: 0
   moveSpeedModifier: 3

@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float dmg){
         HP -= Mathf.Max(0, dmg + damageReceivedModifier);
-        hpBar.fillAmount = ((float)HP / (float)MaxHP);
+        hpBar.fillAmount = HP / MaxHP;
         if (HP <= 0f){
             Death();
         }
