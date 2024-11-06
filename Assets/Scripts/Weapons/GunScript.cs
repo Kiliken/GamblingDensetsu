@@ -18,6 +18,7 @@ public class GunScript : MonoBehaviour
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI gunNameText;
     public TextMeshProUGUI ReloadText;
+    DiceFaceScript diceFace;
     Animator animator;
     public string gunName = "Gun";
     public float damage = 10f;
@@ -59,6 +60,7 @@ public class GunScript : MonoBehaviour
         effectController = GameObject.Find("Weapons").GetComponent<EffectController>();
         camScript = cam.GetComponent<PlayerCam>();
         currentAmmo = maxAmmo;
+        diceFace = GameObject.Find("DiceFace").GetComponent<DiceFaceScript>();
     }
 
 
@@ -266,17 +268,19 @@ public class GunScript : MonoBehaviour
         else
             maxAmmo = maxAmmoDefault;
         
+        diceFace.SetDiceFace((int)reloadTime);
         ReloadText.gameObject.SetActive(true);
         while(reloadTime > 0){
             reloadTime -= 1.0f;
             if(currentWeapon)
-                ReloadText.text = gunName + " リロード中... " + (reloadTime + 1) + "s";
+                ReloadText.text = " リロード中... " + (reloadTime + 1) + "s";
             yield return new WaitForSeconds(1);
         }
         currentAmmo = maxAmmo;
         if(currentWeapon){
             UpdateAmmoText();
             ReloadText.gameObject.SetActive(false);
+            diceFace.HideDiceFace();
         }
         isReloading = false;
         Debug.Log(gunName + " Reloaded");
@@ -290,7 +294,7 @@ public class GunScript : MonoBehaviour
         gunNameText.text = gunName;
         UpdateAmmoText();
         if(isReloading){
-            ReloadText.text = gunName + " リロード中... " + (reloadTime + 1) + "s";
+            ReloadText.text = " リロード中... " + (reloadTime + 1) + "s";
             ReloadText.gameObject.SetActive(true);
         }
         else{
@@ -303,6 +307,7 @@ public class GunScript : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);
         animator.SetBool("aiming", false);
+        diceFace.HideDiceFace();
     }
 
 
