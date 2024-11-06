@@ -15592,9 +15592,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPrefabs:
-  - {fileID: 2189086697460161940, guid: 8dddcbec68bf3dc43aeebcb5038121eb, type: 3}
   - {fileID: 2189086697460161940, guid: 24ce799ec43dea0419ce93bd0aa02c84, type: 3}
   - {fileID: 2189086697460161940, guid: d777dcbfbf2cc4a4b80d83db4674749a, type: 3}
+  - {fileID: 2189086697460161940, guid: 9cafff79ce083d747b0eeb5ad9aae2fe, type: 3}
+  - {fileID: 2189086697460161940, guid: 8dddcbec68bf3dc43aeebcb5038121eb, type: 3}
   effNum: -1
 --- !u!1 &1980483683
 GameObject:

@@ -25,10 +25,10 @@ public class EnemySpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
         SpawnEnemy();
-        timer += 1 * Time.deltaTime;
+        timer += Time.deltaTime;
         if (timer > spawnTime)
         {
             spawnStatus = true;

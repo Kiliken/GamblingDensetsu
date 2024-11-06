@@ -46,10 +46,10 @@ public class WillOWisp : MonoBehaviour
             case 1:
                 foreach (Collider hitCollider in hitColliders)
                 {
-                    if (hitCollider.gameObject.GetComponent<Player>() != null)
+                    if (hitCollider.gameObject.GetComponent<Enemy>() != null)
                     {
-                        Player player = GameObject.Find("Player").GetComponent<Player>();
-                        player.TakeDamage(10);
+                        Enemy enemy = hitCollider.gameObject.GetComponent<Enemy>();
+                        enemy.TakeDamage(5);
                     }
                 }
                 break;
@@ -59,12 +59,17 @@ public class WillOWisp : MonoBehaviour
                     if (hitCollider.gameObject.GetComponent<Player>() != null)
                     {
                         Player player = GameObject.Find("Player").GetComponent<Player>();
-                        player.TakeDamage(10);
+                        player.TakeDamage(5);
                     }
-                    if (hitCollider.gameObject.GetComponent<Enemy>() != null)
+                }
+                break;
+            case 3:
+                foreach (Collider hitCollider in hitColliders)
+                {
+                    if (hitCollider.gameObject.GetComponent<Player>() != null)
                     {
-                        Enemy enemy = hitCollider.gameObject.GetComponent<Enemy>();
-                        enemy.TakeDamage(10);
+                        Player player = GameObject.Find("Player").GetComponent<Player>();
+                        player.TakeDamage(10);
                     }
                 }
                 break;
