@@ -49,6 +49,7 @@ public class GunScript : MonoBehaviour
     //[SerializeField] bool customCrosshair = false;
     public bool currentWeapon = false;
     public float effectCooldown = 0f;
+    [SerializeField] GameObject damageParticle;
 
 
     void Awake(){
@@ -148,6 +149,9 @@ public class GunScript : MonoBehaviour
                 Enemy enemy = hit.transform.parent.GetComponent<Enemy>();
                 if(enemy != null){
                     enemy.TakeDamage(critDamage + damageModifier);
+                    enemy.TakeDamage(damage + damageModifier);
+                    DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                    popUpDamage.SetDamageText(critDamage + damageModifier);
                     Debug.Log(" Crit Spot Critical Hit");
 
                     ie.transform.parent = enemy.transform;
@@ -162,10 +166,17 @@ public class GunScript : MonoBehaviour
                 if(enemy != null){
                     if(Random.Range(0, critChance + 1) == 0){
                         enemy.TakeDamage(critDamage + damageModifier);
+                        DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                        popUpDamage.SetDamageText(critDamage + damageModifier);
                         Debug.Log("Critical Hit");
                     }
                     else
+                    {
                         enemy.TakeDamage(damage + damageModifier);
+                        DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                        popUpDamage.SetDamageText(critDamage + damageModifier);
+                    }
+                        
 
                     ie.transform.parent = enemy.transform;
                     if (effectCooldown == 0f)
