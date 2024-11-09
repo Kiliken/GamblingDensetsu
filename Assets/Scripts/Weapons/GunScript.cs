@@ -44,6 +44,7 @@ public class GunScript : MonoBehaviour
     public float aimSensDefault = 400f;
     public float aimSensADS = 200f;
     public bool currentWeapon = false;
+    public float effectCooldown = 0f;
 
 
     void Awake(){
@@ -111,6 +112,11 @@ public class GunScript : MonoBehaviour
             if(Input.GetButtonDown("Reload") && currentAmmo != maxAmmo){
                 StartCoroutine(Reload());
             }
+
+            if (effectCooldown > 0f)
+                effectCooldown -= Time.deltaTime;
+            else
+                effectCooldown = 0f;
         }
     }
 
@@ -136,7 +142,10 @@ public class GunScript : MonoBehaviour
                     Debug.Log(" Crit Spot Critical Hit");
 
                     ie.transform.parent = enemy.transform;
-                    effectController.ApplyEffect(enemy);
+                    if (effectCooldown == 0f) 
+                        effectCooldown = effectController.ApplyEffect(enemy);
+                    
+                    
                 }
             }
             else{
@@ -150,7 +159,8 @@ public class GunScript : MonoBehaviour
                         enemy.TakeDamage(damage + damageModifier);
 
                     ie.transform.parent = enemy.transform;
-                    effectController.ApplyEffect(enemy);
+                    if (effectCooldown == 0f)
+                        effectCooldown = effectController.ApplyEffect(enemy);
                 }
             }
         }
