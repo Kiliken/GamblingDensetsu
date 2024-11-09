@@ -46,7 +46,7 @@ public class GunScript : MonoBehaviour
     public float ADSSpeed = 120f;
     public float aimSensDefault = 400f;
     public float aimSensADS = 200f;
-    [SerializeField] bool customCrosshair = false;
+    //[SerializeField] bool customCrosshair = false;
     public bool currentWeapon = false;
     public float effectCooldown = 0f;
 
@@ -228,7 +228,7 @@ public class GunScript : MonoBehaviour
         animator.SetBool("shooting", true);
     }
 
-
+    #region //old reload
     // IEnumerator Reload(){
     //     Debug.Log("Reloading...");
     //     isReloading = true;
@@ -269,6 +269,7 @@ public class GunScript : MonoBehaviour
     //     ReloadText.gameObject.SetActive(false);
     //     Debug.Log("Reloaded");
     // }
+#endregion
 
     IEnumerator Reload(){
         Debug.Log("Reloading...");
