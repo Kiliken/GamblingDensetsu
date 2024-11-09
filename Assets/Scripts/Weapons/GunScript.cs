@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GunScript : MonoBehaviour
@@ -20,6 +21,8 @@ public class GunScript : MonoBehaviour
     public TextMeshProUGUI ReloadText;
     DiceFaceScript diceFace;
     Animator animator;
+    GameObject crosshairDefault;
+    [SerializeField] GameObject crosshairCustom;
     public string gunName = "Gun";
     public float damage = 10f;
     public float damageModifier = 0f;
@@ -43,6 +46,7 @@ public class GunScript : MonoBehaviour
     public float ADSSpeed = 120f;
     public float aimSensDefault = 400f;
     public float aimSensADS = 200f;
+    [SerializeField] bool customCrosshair = false;
     public bool currentWeapon = false;
     public float effectCooldown = 0f;
 
@@ -62,6 +66,10 @@ public class GunScript : MonoBehaviour
         camScript = cam.GetComponent<PlayerCam>();
         currentAmmo = maxAmmo;
         diceFace = GameObject.Find("DiceFace").GetComponent<DiceFaceScript>();
+        crosshairDefault = GameObject.Find("Crosshair");
+        if(crosshairCustom == null){
+            crosshairCustom = crosshairDefault;
+        }
     }
 
 
@@ -83,6 +91,7 @@ public class GunScript : MonoBehaviour
                 cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, ADSZoom, ADSSpeed * Time.deltaTime);
                 animator.SetBool("aiming", true);
                 camScript.sensX = camScript.sensY = aimSensADS;
+
             }
             else if(cam.fieldOfView < defaultZoom){
                 cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, defaultZoom, ADSSpeed * Time.deltaTime);
@@ -328,5 +337,15 @@ public class GunScript : MonoBehaviour
 
     public void ShootEvent(){
         animator.SetBool("shooting", false);
+    }
+
+    public void AimDownEvent(){
+        crosshairDefault.SetActive(false);
+        crosshairCustom.SetActive(true);
+    }
+
+    public void AimUpEvent(){
+        crosshairDefault.SetActive(true);
+        crosshairCustom.SetActive(false);
     }
 }

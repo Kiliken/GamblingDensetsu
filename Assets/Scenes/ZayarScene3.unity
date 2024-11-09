@@ -10930,11 +10930,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5915865803010411655, guid: 90a6f78b5aa8fa645b599f9b351baf26, type: 3}
   m_PrefabInstance: {fileID: 1049425065}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1350920673 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3280452414875938011, guid: 3655b19b63a2b8b438aa69f3b0838e10, type: 3}
-  m_PrefabInstance: {fileID: 1550835574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1351057901 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5915865803010411655, guid: 90a6f78b5aa8fa645b599f9b351baf26, type: 3}
@@ -13201,6 +13196,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5915865803010411655, guid: 90a6f78b5aa8fa645b599f9b351baf26, type: 3}
   m_PrefabInstance: {fileID: 1679412623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1684453537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3280452414875938011, guid: 3655b19b63a2b8b438aa69f3b0838e10, type: 3}
+  m_PrefabInstance: {fileID: 1550835574}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1685228097 stripped
 Transform:
@@ -15481,22 +15481,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 426443050071635482, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 2071788594}
-    - target: {fileID: 426443050071635482, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
-      propertyPath: ammoText
-      value: 
-      objectReference: {fileID: 1550835577}
-    - target: {fileID: 426443050071635482, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
-      propertyPath: ReloadText
-      value: 
-      objectReference: {fileID: 1550835575}
-    - target: {fileID: 426443050071635482, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
-      propertyPath: gunNameText
-      value: 
-      objectReference: {fileID: 1550835576}
     - target: {fileID: 668216003044350981, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -15560,7 +15544,7 @@ PrefabInstance:
     - target: {fileID: 2652404620890328569, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: crosshairCustom
       value: 
-      objectReference: {fileID: 1350920673}
+      objectReference: {fileID: 1684453537}
     - target: {fileID: 3778356004963137485, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: cam
       value: 
@@ -15739,11 +15723,7 @@ MonoBehaviour:
   - {fileID: 2189086697460161940, guid: d777dcbfbf2cc4a4b80d83db4674749a, type: 3}
   - {fileID: 2189086697460161940, guid: 9cafff79ce083d747b0eeb5ad9aae2fe, type: 3}
   - {fileID: 2189086697460161940, guid: 8dddcbec68bf3dc43aeebcb5038121eb, type: 3}
-  effectCooldowns:
-  - 4
-  - 4
-  - 4
-  - 4
+  effectCooldowns: []
   effNum: -1
 --- !u!1 &1980483683
 GameObject:
@@ -16792,6 +16772,14 @@ PrefabInstance:
     - target: {fileID: 3161990138560962121, guid: 020865b3d8fb0134c94a423caef9b27f, type: 3}
       propertyPath: jumpForce
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019293781496388126, guid: 020865b3d8fb0134c94a423caef9b27f, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019293781496388126, guid: 020865b3d8fb0134c94a423caef9b27f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8948210977453548112, guid: 020865b3d8fb0134c94a423caef9b27f, type: 3}
       propertyPath: m_LocalPosition.x
