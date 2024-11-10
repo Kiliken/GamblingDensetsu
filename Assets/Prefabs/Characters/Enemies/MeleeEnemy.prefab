@@ -146,9 +146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd23501adb33c3d4c99bce6fcb99e2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 20
+  HP: 30
   moveSpeed: 3.5
   speedModifier: 0
+  healthPickup: {fileID: 6173105986629615927, guid: bacd04debd947284794207de4e75e706, type: 3}
 --- !u!114 &4428379404114798616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +320,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &252694725857734301
 MonoBehaviour:

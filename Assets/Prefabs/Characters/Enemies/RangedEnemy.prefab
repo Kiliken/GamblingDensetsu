@@ -256,8 +256,7 @@ MonoBehaviour:
   fireRate: 6
   reactionTime: 18
   muzzleFlash: {fileID: 2838603274767720136}
-  HP: 50
-  damage: 10
+  damage: 2
   damageModifier: 0
 --- !u!114 &2521423135673501682
 MonoBehaviour:
@@ -271,9 +270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd23501adb33c3d4c99bce6fcb99e2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 15
+  HP: 10
   moveSpeed: 3.5
   speedModifier: 0
+  healthPickup: {fileID: 6173105986629615927, guid: bacd04debd947284794207de4e75e706, type: 3}
 --- !u!1 &5845516215342752271
 GameObject:
   m_ObjectHideFlags: 0

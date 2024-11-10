@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     public float HP = 50f;
     public float moveSpeed = 3.5f;
     public float speedModifier = 0f;
+    [SerializeField] GameObject healthPickup;
+    public int itemDropChance = 3;
 
     private void Start()
     {
@@ -22,6 +24,9 @@ public class Enemy : MonoBehaviour
     }
 
     public void Death(){
+        if(Random.Range(0, itemDropChance + 1) == 0){
+            Instantiate(healthPickup, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 

@@ -35,6 +35,12 @@ public class Player : MonoBehaviour
     }
 
 
+    public void RestoreHP(float HPRestored){
+        HP = Mathf.Min(MaxHP, HP + HPRestored);
+        hpBar.fillAmount = HP / MaxHP;
+    }
+
+
     private void Death(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

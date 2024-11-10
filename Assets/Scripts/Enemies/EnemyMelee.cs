@@ -45,7 +45,7 @@ public class EnemyMelee : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("in");
+            //Debug.Log("in");
             inRange = true;
         }
     }
@@ -54,7 +54,7 @@ public class EnemyMelee : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("out");
+            //Debug.Log("out");
             inRange = false;
         }
     }

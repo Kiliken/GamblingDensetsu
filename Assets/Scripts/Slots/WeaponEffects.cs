@@ -186,19 +186,19 @@ public class WeaponEffects : MonoBehaviour
                     {
                         case true when (isBuff && effectMultiplier == 1.5f):
                             effectController.effNum = 0;
-                            slotsUI.SetEffectText("Will'o " + plus, true);
+                            slotsUI.SetEffectText("爆発弾 " + plus, true);
                             break;
                         case true when (isBuff):
                             effectController.effNum = 1;
-                            slotsUI.SetEffectText("Will'o " + plus, true);
+                            slotsUI.SetEffectText("爆発弾 " + plus, true);
                             break;
                         case true when (effectMultiplier == 1.5f):
                             effectController.effNum = 3;
-                            slotsUI.SetEffectText("Will'o " + minus, false);
+                            slotsUI.SetEffectText("爆発弾 " + minus, false);
                             break;
                         default:
                             effectController.effNum = 2;
-                            slotsUI.SetEffectText("Will'o " + minus, false);
+                            slotsUI.SetEffectText("爆発弾 " + minus, false);
                             break;
                     
                     }

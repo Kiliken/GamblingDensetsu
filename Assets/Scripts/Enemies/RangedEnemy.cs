@@ -22,9 +22,9 @@ public class RangedEnemy : MonoBehaviour
     LayerMask mask = -1;
 
     [Space(12)]
-    public float HP = 50f;
+    //public float HP = 50f;
     float timer;
-    public float damage = 10f;
+    public float damage = 2f;
     public float damageModifier = 0f;   //damage + damageModifier
 
     // Start is called before the first frame update
@@ -50,7 +50,7 @@ public class RangedEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Debug.DrawRay(transform.position, (playerPos.position - transform.position), Color.green);
+        Debug.DrawRay(transform.position, (playerPos.position - transform.position), Color.green);
         if ((Physics.Raycast(transform.position, (playerPos.position - transform.position), out RaycastHit ray, attackRange, mask, QueryTriggerInteraction.Ignore)) && ray.collider.CompareTag("Player"))
         {
             enemyAI.ResetPath();
@@ -61,7 +61,7 @@ public class RangedEnemy : MonoBehaviour
             if (timer <= 0)
             {
                 Shoot(damage, 80);
-                Debug.Log("BANG!");
+                //Debug.Log("BANG!");
                 timer = fireRate;
             }
         }
@@ -85,14 +85,16 @@ public class RangedEnemy : MonoBehaviour
         if (Random.Range(1, 100) <= accuracy)
             player.TakeDamage(damage);
     }
-    public void TakeDamage(float dmg){
-        HP -= dmg;
-        if(HP <= 0f){
-            Death();
-        }
-    }
 
-    public void Death(){
-        Destroy(gameObject);
-    }
+
+    // public void TakeDamage(float dmg){
+    //     HP -= dmg;
+    //     if(HP <= 0f){
+    //         Death();
+    //     }
+    // }
+
+//     public void Death(){
+//         Destroy(gameObject);
+//     }
 }

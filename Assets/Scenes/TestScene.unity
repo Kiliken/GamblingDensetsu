@@ -2254,11 +2254,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5915865803010411655, guid: 90a6f78b5aa8fa645b599f9b351baf26, type: 3}
   m_PrefabInstance: {fileID: 2080674143}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &260445952 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7483659950206898025, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
-  m_PrefabInstance: {fileID: 1974027892}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &264035251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6251,11 +6246,6 @@ MonoBehaviour:
   - {fileID: 3694903647343167033, guid: 76549e53df5c12b438fe00a83b35f276, type: 3}
   spawnTime: 30
   enemyContainer: {fileID: 317803729}
---- !u!224 &751018795 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6969121101541962109, guid: 3655b19b63a2b8b438aa69f3b0838e10, type: 3}
-  m_PrefabInstance: {fileID: 1550835574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &757971743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5915865803010411655, guid: 90a6f78b5aa8fa645b599f9b351baf26, type: 3}
@@ -10115,100 +10105,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90a6f78b5aa8fa645b599f9b351baf26, type: 3}
---- !u!1 &1263818245
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1263818246}
-  - component: {fileID: 1263818249}
-  - component: {fileID: 1263818248}
-  - component: {fileID: 1263818247}
-  m_Layer: 5
-  m_Name: DiceFace
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1263818246
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1263818245}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 751018795}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 140}
-  m_SizeDelta: {x: 70, y: 70}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1263818247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1263818245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9036e1f16e8b5084c8d1056a1055fbe1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dice1: {fileID: 21300000, guid: 12da111c91896664cb022b6159d730e1, type: 3}
-  dice2: {fileID: 21300000, guid: 742fafd9e328d684cadfca8266fd787d, type: 3}
-  dice3: {fileID: 21300000, guid: d4705c8bf8ed7554995861ffc8745548, type: 3}
-  dice4: {fileID: 21300000, guid: c7d0f3bc3782889489b6475fab9fbaab, type: 3}
-  dice5: {fileID: 21300000, guid: 177f00230b3af8644b4293b951e92fba, type: 3}
-  dice6: {fileID: 21300000, guid: 9d3b03f7cdd6fab40b797868042b7580, type: 3}
---- !u!114 &1263818248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1263818245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 12da111c91896664cb022b6159d730e1, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1263818249
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1263818245}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1275937165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12202,10 +12098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6969121101541962109, guid: 3655b19b63a2b8b438aa69f3b0838e10, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1263818246}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3655b19b63a2b8b438aa69f3b0838e10, type: 3}
 --- !u!114 &1550835575 stripped
@@ -15796,39 +15689,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7483659950206898025, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1974027895}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
 --- !u!4 &1974027893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6176262354675409682, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
   m_PrefabInstance: {fileID: 1974027892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1974027895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260445952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74e9873662f11546acebfc223b8ea33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectPrefabs:
-  - {fileID: 2189086697460161940, guid: 24ce799ec43dea0419ce93bd0aa02c84, type: 3}
-  - {fileID: 2189086697460161940, guid: d777dcbfbf2cc4a4b80d83db4674749a, type: 3}
-  - {fileID: 2189086697460161940, guid: 9cafff79ce083d747b0eeb5ad9aae2fe, type: 3}
-  - {fileID: 2189086697460161940, guid: 8dddcbec68bf3dc43aeebcb5038121eb, type: 3}
-  effectCooldowns:
-  - 4
-  - 4
-  - 4
-  - 4
-  effNum: -1
 --- !u!1 &1980483683
 GameObject:
   m_ObjectHideFlags: 0
