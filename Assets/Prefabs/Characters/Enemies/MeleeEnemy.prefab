@@ -150,6 +150,7 @@ MonoBehaviour:
   moveSpeed: 3.5
   speedModifier: 0
   healthPickup: {fileID: 6173105986629615927, guid: bacd04debd947284794207de4e75e706, type: 3}
+  itemDropChance: 5
 --- !u!114 &4428379404114798616
 MonoBehaviour:
   m_ObjectHideFlags: 0

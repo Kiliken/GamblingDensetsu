@@ -54,8 +54,9 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   gunNameText: {fileID: 0}
   ReloadText: {fileID: 0}
+  crosshairCustom: {fileID: 0}
   gunName: "\u30B7\u30E7\u30C3\u30C8\u30AC\u30F3"
-  damage: 4
+  damage: 8
   damageModifier: 0
   critDamage: 6
   critChance: 8
@@ -73,6 +74,8 @@ MonoBehaviour:
   aimSensDefault: 400
   aimSensADS: 200
   currentWeapon: 0
+  effectCooldown: 0
+  damageParticle: {fileID: 0}
 --- !u!114 &207470039634019591
 MonoBehaviour:
   m_ObjectHideFlags: 0

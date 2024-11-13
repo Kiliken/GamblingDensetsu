@@ -1,55 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] Transform[] enemySpawnPoint;
+    // add from spawn rate lowest to highest
     [SerializeField] GameObject[] enemy;
-    [SerializeField] float spawnTime;
+    private int enemyNo;
+    // spawn rates of each enemy above
+    [SerializeField] int[] spawnRate;
+    [SerializeField] float spawnTime = 5f;
+    private float spawnTimer = 0f;
     [SerializeField] GameObject enemyContainer;
 
-    int enemyCount;
-    int dif;
-    float timer;
-    bool spawnStatus;
+    //[SerializeField] int spawnCount = 1;
+    [SerializeField] int spawnRateIncrease = 2;
+    int rateSum = 0;
+    [SerializeField] float spawnRateIncreaseTime = 30f;
+    float spawnRateIncreaseTimer = 0f;
+    bool spawnStatus = true;
     GameObject newEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemyCount = 4;
-        dif = 1;
-        spawnStatus = true;
-        timer = 0;
+        enemyNo = enemy.Length;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        SpawnEnemy();
-        timer += Time.deltaTime;
-        if (timer > spawnTime)
-        {
-            spawnStatus = true;
-            timer = 0;
-            dif++;
-            enemyCount = 2 * dif;
+        if(spawnStatus){
+            if(spawnTimer < spawnTime){
+                spawnTimer += Time.deltaTime;
+            }
+            else{
+                SpawnEnemy();
+                spawnTimer = 0f;
+            }
+
+            if(spawnRateIncreaseTimer < spawnRateIncreaseTime){
+                spawnRateIncreaseTimer += Time.deltaTime;
+            }
+            else{
+                IncreaseSpawnRates();
+                spawnRateIncreaseTimer = 0f;
+            }
         }
+        
     }
 
-    private void SpawnEnemy()
-    {
-        if (spawnStatus && enemyCount > 0)
-        {
-            newEnemy = Instantiate(enemy[Random.Range(0, enemy.Length)], enemySpawnPoint[Random.Range(0, enemySpawnPoint.Length)].position, Quaternion.identity);
-            newEnemy.transform.parent = enemyContainer.transform;
-            enemyCount--;
+
+    private void SpawnEnemy(){
+        rateSum = 0;
+        for(int i = 0; i < enemyNo; i++){
+            rateSum += spawnRate[i];
         }
-        else
-        {
-            spawnStatus = false;
+        //Debug.Log("Rate sum: " + rateSum);
+
+        int r = Random.Range(0, rateSum + 1);
+        int e = enemyNo - 1;
+        for(int i = 0; i < enemyNo; i++){
+            if(r < spawnRate[i]){
+                e = i;
+                break;
+            }
+            r -= spawnRate[i];
         }
 
+        newEnemy = Instantiate(enemy[e], enemySpawnPoint[Random.Range(0, enemySpawnPoint.Length)].position, Quaternion.identity);
+        newEnemy.transform.parent = enemyContainer.transform;
+        Debug.Log("Enemy spawned " + e);
+    }
+
+
+    private void IncreaseSpawnRates(){
+        for(int i = 0; i < enemyNo; i++){
+            spawnRate[i] += spawnRateIncrease;
+        }
+        Debug.Log("Spawn rates increased");
     }
 }

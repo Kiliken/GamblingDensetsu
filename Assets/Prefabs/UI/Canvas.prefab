@@ -1207,6 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa615978ff25c5340a99d53436353120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elaspedTime: 0
   timerName: 'Time: '
   decreaseTimer: 0
   resetTime: 0
@@ -1793,7 +1794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1515666516821624673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1922,6 +1923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa615978ff25c5340a99d53436353120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elaspedTime: 0
   timerName: "\u6B21\u306E\u30A6\u30A7\u30FC\u30D6: "
   decreaseTimer: 1
   resetTime: 30

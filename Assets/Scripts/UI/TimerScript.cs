@@ -10,7 +10,7 @@ public class TimerScript : MonoBehaviour
     private int minutes = 0;
     private float seconds = 0f;
     private float milliseconds = 0f; 
-    private float elaspedTime = 0f;
+    public float elaspedTime = 0f;
     [SerializeField] string timerName = "Time: ";
     [SerializeField] bool decreaseTimer = false;
     public float resetTime = 0f;    // in seconds

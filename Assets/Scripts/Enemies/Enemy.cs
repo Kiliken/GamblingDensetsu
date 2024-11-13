@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 3.5f;
     public float speedModifier = 0f;
     [SerializeField] GameObject healthPickup;
-    public int itemDropChance = 3;
+    public int itemDropChance = 5;
 
     private void Start()
     {

@@ -6247,10 +6247,13 @@ MonoBehaviour:
   - {fileID: 1980483684}
   - {fileID: 328055917}
   enemy:
-  - {fileID: 7214017746145842896, guid: aa95daa20f0e1e94d86fe2b6c62e820f, type: 3}
   - {fileID: 3694903647343167033, guid: 76549e53df5c12b438fe00a83b35f276, type: 3}
-  spawnTime: 30
+  - {fileID: 7214017746145842896, guid: aa95daa20f0e1e94d86fe2b6c62e820f, type: 3}
+  spawnRate: 0c0000001e000000
+  spawnTime: 5
   enemyContainer: {fileID: 317803729}
+  spawnRateIncrease: 2
+  spawnRateIncreaseTime: 30
 --- !u!4 &757971743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5915865803010411655, guid: 90a6f78b5aa8fa645b599f9b351baf26, type: 3}

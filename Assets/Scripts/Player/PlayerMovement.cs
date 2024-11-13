@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetAxisRaw("Jump")!=0 && readyToJump && grounded) {
             readyToJump = false;
-            Debug.Log("jump");
+            //Debug.Log("jump");
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
