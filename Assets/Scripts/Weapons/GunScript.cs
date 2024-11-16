@@ -149,9 +149,10 @@ public class GunScript : MonoBehaviour
                 Enemy enemy = hit.transform.parent.GetComponent<Enemy>();
                 if(enemy != null){
                     enemy.TakeDamage(critDamage + damageModifier);
-                    enemy.TakeDamage(damage + damageModifier);
+                    //enemy.TakeDamage(damage + damageModifier);
                     DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
                     popUpDamage.SetDamageText(critDamage + damageModifier);
+                    popUpDamage.SetTextColor(Color.red);
                     Debug.Log(" Crit Spot Critical Hit");
 
                     ie.transform.parent = enemy.transform;
@@ -168,13 +169,14 @@ public class GunScript : MonoBehaviour
                         enemy.TakeDamage(critDamage + damageModifier);
                         DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
                         popUpDamage.SetDamageText(critDamage + damageModifier);
+                        popUpDamage.SetTextColor(Color.yellow);
                         Debug.Log("Critical Hit");
                     }
                     else
                     {
                         enemy.TakeDamage(damage + damageModifier);
                         DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
-                        popUpDamage.SetDamageText(critDamage + damageModifier);
+                        popUpDamage.SetDamageText(damage + damageModifier);
                     }
                         
 
@@ -213,24 +215,37 @@ public class GunScript : MonoBehaviour
                     Enemy enemy = hit.transform.parent.GetComponent<Enemy>();
                     if(enemy != null){
                         enemy.TakeDamage(critDamage + damageModifier);
+                        DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                        popUpDamage.SetDamageText(critDamage + damageModifier);
+                        popUpDamage.SetTextColor(Color.red);
                         Debug.Log("Crit Spot Critical Hit");
 
                         ie.transform.parent = enemy.transform;
-                        effectController.ApplyEffect(enemy);
+                        if (effectCooldown == 0f)
+                            effectCooldown = effectController.ApplyEffect(enemy);
                     }
                 }
                 else{
                     Enemy enemy = hit.transform.GetComponent<Enemy>();
                     if(enemy != null){
-                        if(Random.Range(0, critChance + 1) == 0){
+                        if (Random.Range(0, critChance + 1) == 0)
+                        {
                             enemy.TakeDamage(critDamage + damageModifier);
+                            DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                            popUpDamage.SetDamageText(critDamage + damageModifier);
+                            popUpDamage.SetTextColor(Color.yellow);
                             Debug.Log("Critical Hit");
                         }
-                        else
+                        else {
                             enemy.TakeDamage(damage + damageModifier);
+                            DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                            popUpDamage.SetDamageText(damage + damageModifier);
+                        }
+                        
 
                         ie.transform.parent = enemy.transform;
-                        effectController.ApplyEffect(enemy);
+                        if (effectCooldown == 0f)
+                            effectCooldown = effectController.ApplyEffect(enemy);
                     }
                 }
             }
