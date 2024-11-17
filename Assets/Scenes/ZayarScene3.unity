@@ -15518,6 +15518,26 @@ PrefabInstance:
       propertyPath: gunNameText
       value: 
       objectReference: {fileID: 1550835576}
+    - target: {fileID: 4918571067984452596, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 2071788594}
+    - target: {fileID: 4918571067984452596, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1550835577}
+    - target: {fileID: 4918571067984452596, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
+      propertyPath: ReloadText
+      value: 
+      objectReference: {fileID: 1550835575}
+    - target: {fileID: 4918571067984452596, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
+      propertyPath: gunNameText
+      value: 
+      objectReference: {fileID: 1550835576}
+    - target: {fileID: 4918571067984452596, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
+      propertyPath: crosshairCustom
+      value: 
+      objectReference: {fileID: 1684453537}
     - target: {fileID: 4942417582010119140, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: m_IsActive
       value: 1

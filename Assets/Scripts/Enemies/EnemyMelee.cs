@@ -1,34 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
-public class EnemyMelee : MonoBehaviour
+public class EnemyMelee : Enemy
 {
-    [Header("Melee")]
-    [SerializeField]float radius;
+    public bool inRange = false;
 
-    float timer;
-    bool inRange;
-    public float damage = 10f;
-    public float damageModifier = 0f;   //damage + damageModifier
-    Player player;
 
-    void Start()
+    // Start is called before the first frame update
+    new void Start()
     {
+        base.Start();
         timer = 0f;
-        if (!(player = GameObject.Find("Player").GetComponent<Player>()))
-            Debug.LogError("NO OBJECT PLAYER FOUND");
     }
 
-    private void Update()
+
+    // Update is called once per frame
+    void Update()
     {
         if (inRange)
         {
             timer += 1 * Time.deltaTime;
             if(timer > 1f)
             {
-                Attack(damage);
+                Attack(damage, 0);
                 timer = 0f;
             }
         } else
@@ -37,26 +32,16 @@ public class EnemyMelee : MonoBehaviour
         }
     }
 
-    private void Attack(float damage) {
+
+    private void FixedUpdate()
+    {
+        enemyAI.SetDestination(GetRadius(transform.position,playerPos.position,attackRange));
+        enemyAI.speed = Mathf.Max(1, moveSpeed + speedModifier);
+    }
+
+
+    protected override void Attack(float dmg, float accuracy)
+    {
         player.TakeDamage(damage);
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            //Debug.Log("in");
-            inRange = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            //Debug.Log("out");
-            inRange = false;
-        }
-    }
-
 }

@@ -15475,7 +15475,7 @@ PrefabInstance:
       objectReference: {fileID: 2071788594}
     - target: {fileID: 738366045251741752, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: damage
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 738366045251741752, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: ammoText
@@ -15485,6 +15485,10 @@ PrefabInstance:
       propertyPath: ReloadText
       value: 
       objectReference: {fileID: 1550835575}
+    - target: {fileID: 738366045251741752, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
+      propertyPath: critDamage
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 738366045251741752, guid: 4ad71b9ef33c70e4da6a3304361abbd7, type: 3}
       propertyPath: gunNameText
       value: 

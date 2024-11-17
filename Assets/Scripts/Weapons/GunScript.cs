@@ -148,10 +148,10 @@ public class GunScript : MonoBehaviour
             if(hit.transform.tag == "CritSpot"){
                 Enemy enemy = hit.transform.parent.GetComponent<Enemy>();
                 if(enemy != null){
-                    enemy.TakeDamage(critDamage + damageModifier);
-                    //enemy.TakeDamage(damage + damageModifier);
+                    float dmg = Mathf.Max(1, critDamage + damageModifier);
+                    enemy.TakeDamage(dmg);
                     DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
-                    popUpDamage.SetDamageText(critDamage + damageModifier);
+                    popUpDamage.SetDamageText((int)dmg);
                     popUpDamage.SetTextColor(Color.red);
                     Debug.Log(" Crit Spot Critical Hit");
 
@@ -166,17 +166,19 @@ public class GunScript : MonoBehaviour
                 Enemy enemy = hit.transform.GetComponent<Enemy>();
                 if(enemy != null){
                     if(Random.Range(0, critChance + 1) == 0){
-                        enemy.TakeDamage(critDamage + damageModifier);
+                        float dmg = Mathf.Max(1, critDamage + damageModifier);
+                        enemy.TakeDamage(dmg);
                         DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
-                        popUpDamage.SetDamageText(critDamage + damageModifier);
+                        popUpDamage.SetDamageText((int)dmg);
                         popUpDamage.SetTextColor(Color.yellow);
                         Debug.Log("Critical Hit");
                     }
                     else
                     {
-                        enemy.TakeDamage(damage + damageModifier);
+                        float dmg = Mathf.Max(1, damage + damageModifier);
+                        enemy.TakeDamage(dmg);
                         DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
-                        popUpDamage.SetDamageText(damage + damageModifier);
+                        popUpDamage.SetDamageText((int)dmg);
                     }
                         
 
@@ -214,9 +216,10 @@ public class GunScript : MonoBehaviour
                 if(hit.transform.tag == "CritSpot"){
                     Enemy enemy = hit.transform.parent.GetComponent<Enemy>();
                     if(enemy != null){
-                        enemy.TakeDamage(critDamage + damageModifier);
+                        float dmg = Mathf.Max(1, critDamage + damageModifier);
+                        enemy.TakeDamage(dmg);
                         DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
-                        popUpDamage.SetDamageText(critDamage + damageModifier);
+                        popUpDamage.SetDamageText((int)dmg);
                         popUpDamage.SetTextColor(Color.red);
                         Debug.Log("Crit Spot Critical Hit");
 
@@ -230,16 +233,18 @@ public class GunScript : MonoBehaviour
                     if(enemy != null){
                         if (Random.Range(0, critChance + 1) == 0)
                         {
-                            enemy.TakeDamage(critDamage + damageModifier);
+                            float dmg = Mathf.Max(1, critDamage + damageModifier);
+                            enemy.TakeDamage(dmg);
                             DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
-                            popUpDamage.SetDamageText(critDamage + damageModifier);
+                            popUpDamage.SetDamageText((int)dmg);
                             popUpDamage.SetTextColor(Color.yellow);
                             Debug.Log("Critical Hit");
                         }
                         else {
-                            enemy.TakeDamage(damage + damageModifier);
+                            float dmg = Mathf.Max(1, damage + damageModifier);
+                            enemy.TakeDamage(dmg);
                             DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
-                            popUpDamage.SetDamageText(damage + damageModifier);
+                            popUpDamage.SetDamageText((int)dmg);
                         }
                         
 
