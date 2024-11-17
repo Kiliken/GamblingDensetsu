@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         crouching,
         air
     }
+    [HideInInspector] public bool playerActive = true;
 
 
     // Start is called before the first frame update
@@ -69,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         startYScale = transform.localScale.y;
         crouching = false;
     }
+
 
     private void MyInput() {
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -98,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     private void StateHandler() {
         if (Input.GetAxisRaw("Crouch") != 0) {
             state = MovementState.crouching;
@@ -121,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     private void MovePlayer() {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
@@ -141,28 +145,34 @@ public class PlayerMovement : MonoBehaviour
         rb.useGravity = !OnSlope();
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
+        if(playerActive){
+            grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
         
-        MyInput();
-        SpeedControl();
-        StateHandler();
+            MyInput();
+            SpeedControl();
+            StateHandler();
 
-        if (grounded)
-        {
-            rb.drag = groundDrag;
-        }
-        else
-        {
-            rb.drag = 0;
+            if (grounded)
+            {
+                rb.drag = groundDrag;
+            }
+            else
+            {
+                rb.drag = 0;
+            }
         }
     }
 
+
     private void FixedUpdate()
     {
-        MovePlayer();
+        if(playerActive){
+            MovePlayer();
+        }
     }
 
     private void SpeedControl() {
@@ -182,11 +192,8 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
             }
         }
-
-        
-
-        
     }
+
 
     private void Jump() {
         exitingSlope = true;
@@ -196,11 +203,13 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
+
     private void ResetJump()
     {
         exitingSlope = false;
         readyToJump = true;
     }
+
 
     private bool OnSlope() {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f)) {
@@ -210,6 +219,7 @@ public class PlayerMovement : MonoBehaviour
 
         return false;
     }
+
 
     private Vector3 GetSlopeMoveDirection() { 
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;

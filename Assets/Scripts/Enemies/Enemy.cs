@@ -20,15 +20,16 @@ public class Enemy : MonoBehaviour
     
     [SerializeField] GameObject healthPickup;
     public int itemDropChance = 5;
+    public bool enemyActive = true;
     
 
 
     protected void Start()
     {
         enemyAI = this.GetComponent<NavMeshAgent>();
-        if (!(playerPos = GameObject.Find("Player").GetComponent<Transform>()))
+        if (!(playerPos = GameObject.Find("/Player").GetComponent<Transform>()))
             Debug.LogError("NO OBJECT PLAYER FOUND");
-        if (!(player = GameObject.Find("Player").GetComponent<Player>()))
+        if (!(player = GameObject.Find("/Player").GetComponent<Player>()))
             Debug.LogError("NO OBJECT PLAYER FOUND");
     }
 
@@ -64,5 +65,10 @@ public class Enemy : MonoBehaviour
     public GameObject GetEnemyObj()
     {
         return this.gameObject;
+    }
+
+    public void SetEnemyActive(bool active){
+        enemyActive = active;
+        enemyAI.enabled = active;
     }
 }

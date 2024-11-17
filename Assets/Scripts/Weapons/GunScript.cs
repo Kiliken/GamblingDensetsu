@@ -63,11 +63,11 @@ public class GunScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        effectController = GameObject.Find("Weapons").GetComponent<EffectController>();
+        effectController = GameObject.Find("/CameraHolder/Main Camera/Weapons").GetComponent<EffectController>();
         camScript = cam.GetComponent<PlayerCam>();
         currentAmmo = maxAmmo;
-        diceFace = GameObject.Find("DiceFace").GetComponent<DiceFaceScript>();
-        crosshairDefault = GameObject.Find("Crosshair");
+        diceFace = GameObject.Find("/Canvas/DiceFace").GetComponent<DiceFaceScript>();
+        crosshairDefault = GameObject.Find("/Canvas/Crosshair");
         if(crosshairCustom == null){
             crosshairCustom = crosshairDefault;
         }

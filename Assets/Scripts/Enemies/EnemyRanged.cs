@@ -21,26 +21,28 @@ public class EnemyRanged : Enemy
 
     void FixedUpdate()
     {
-        Debug.DrawRay(transform.position, (playerPos.position - transform.position), Color.green);
-        if ((Physics.Raycast(transform.position, (playerPos.position - transform.position), out RaycastHit ray, attackRange, mask, QueryTriggerInteraction.Ignore)) && ray.collider.CompareTag("Player"))
-        {
-            enemyAI.ResetPath();
-            //Debug.Log("See ya");
-            //shoot
-            transform.LookAt(playerPos);
-            timer += -0.25f;
-            if (timer <= 0)
+        if(enemyActive){
+            Debug.DrawRay(transform.position, (playerPos.position - transform.position), Color.green);
+            if ((Physics.Raycast(transform.position, (playerPos.position - transform.position), out RaycastHit ray, attackRange, mask, QueryTriggerInteraction.Ignore)) && ray.collider.CompareTag("Player"))
             {
-                Attack(damage, 80);
-                //Debug.Log("BANG!");
-                timer = fireRate;
+                enemyAI.ResetPath();
+                //Debug.Log("See ya");
+                //shoot
+                transform.LookAt(playerPos);
+                timer += -0.25f;
+                if (timer <= 0)
+                {
+                    Attack(damage, 80);
+                    //Debug.Log("BANG!");
+                    timer = fireRate;
+                }
             }
-        }
-        else
-        {
-            timer = reactionTime;
-            enemyAI.SetDestination(GetRadius(transform.position, playerPos.position, 1f));
-            enemyAI.speed = Mathf.Max(1, moveSpeed + speedModifier);
+            else
+            {
+                timer = reactionTime;
+                enemyAI.SetDestination(GetRadius(transform.position, playerPos.position, 1f));
+                enemyAI.speed = Mathf.Max(1, moveSpeed + speedModifier);
+            }
         }
     }
 

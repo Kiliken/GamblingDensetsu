@@ -71,4 +71,9 @@ public class WeaponsScript : MonoBehaviour
             currentWeapon = weapNo;
         }
     }
+
+    public void DisableWeapon(){
+        transform.GetChild(currentWeapon).GetComponent<GunScript>().SelectOtherWeapon();
+        transform.GetChild(currentWeapon).GetComponent<WeaponEffects>().RemoveEffects();
+    }
 }

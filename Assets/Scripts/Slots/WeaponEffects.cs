@@ -32,12 +32,12 @@ public class WeaponEffects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerScript = GameObject.Find("Player").GetComponent<Player>();
-        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        playerScript = GameObject.Find("/Player").GetComponent<Player>();
+        playerMovement = GameObject.Find("/Player").GetComponent<PlayerMovement>();
         gun = GetComponent<GunScript>();
-        slotsUI = GameObject.Find("Slots").GetComponent<SlotsUI>();
-        enemyManager = GameObject.Find("Enemies").GetComponent<EnemyManager>();
-        effectController = GameObject.Find("Weapons").GetComponent<EffectController>();
+        slotsUI = GameObject.Find("/Canvas/Slots").GetComponent<SlotsUI>();
+        enemyManager = GameObject.Find("/Enemies").GetComponent<EnemyManager>();
+        effectController = GameObject.Find("/CameraHolder/Main Camera/Weapons").GetComponent<EffectController>();
     }
 
     // Update is called once per frame

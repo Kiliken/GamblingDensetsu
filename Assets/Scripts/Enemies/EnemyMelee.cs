@@ -18,25 +18,30 @@ public class EnemyMelee : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (inRange)
-        {
-            timer += 1 * Time.deltaTime;
-            if(timer > 1f)
+        if(enemyActive){
+            if (inRange)
             {
-                Attack(damage, 0);
+                timer += 1 * Time.deltaTime;
+                if(timer > 1f)
+                {
+                    Attack(damage, 0);
+                    timer = 0f;
+                }
+            } else
+            {
                 timer = 0f;
             }
-        } else
-        {
-            timer = 0f;
         }
+        
     }
 
 
     private void FixedUpdate()
     {
-        enemyAI.SetDestination(GetRadius(transform.position,playerPos.position,attackRange));
-        enemyAI.speed = Mathf.Max(1, moveSpeed + speedModifier);
+        if(enemyActive){
+            enemyAI.SetDestination(GetRadius(transform.position,playerPos.position,attackRange));
+            enemyAI.speed = Mathf.Max(1, moveSpeed + speedModifier);
+        }
     }
 
 

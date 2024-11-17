@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     int rateSum = 0;
     [SerializeField] float spawnRateIncreaseTime = 30f;
     float spawnRateIncreaseTimer = 0f;
-    bool spawnStatus = true;
+    public bool spawnStatus = true;
     GameObject newEnemy;
 
     // Start is called before the first frame update

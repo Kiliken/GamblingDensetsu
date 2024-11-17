@@ -6,16 +6,23 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    PlayerMovement playerMovement;
+    PlayerCam playerCam;
+    WeaponsScript weapons;
     public float MaxHP = 100f;
     public float HP;
     public float damageReceivedModifier = 0f;
 
     [Space(12)]
     [SerializeField] Image hpBar;
+    public bool playerActive = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerMovement = GetComponent<PlayerMovement>();
+        playerCam = GameObject.Find("/CameraHolder/Main Camera").GetComponent<PlayerCam>();
+        weapons = GameObject.Find("/CameraHolder/Main Camera/Weapons").GetComponent<WeaponsScript>();
         HP = MaxHP;
     }
 
@@ -43,5 +50,13 @@ public class Player : MonoBehaviour
 
     private void Death(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+    public void SetPlayerActive(bool active){
+        playerMovement.playerActive = active;
+        playerCam.playerActive = active;
+        if(!active)
+            weapons.DisableWeapon();
     }
 }
