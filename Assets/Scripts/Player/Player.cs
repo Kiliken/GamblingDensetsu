@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     PlayerMovement playerMovement;
     PlayerCam playerCam;
     WeaponsScript weapons;
+    GameController gameController;
     public float MaxHP = 100f;
     public float HP;
     public float damageReceivedModifier = 0f;
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerCam = GameObject.Find("/CameraHolder/Main Camera").GetComponent<PlayerCam>();
         weapons = GameObject.Find("/CameraHolder/Main Camera/Weapons").GetComponent<WeaponsScript>();
+        gameController = GameObject.Find("/GameController").GetComponent<GameController>();
         HP = MaxHP;
     }
 
@@ -49,7 +51,10 @@ public class Player : MonoBehaviour
 
 
     private void Death(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SetPlayerActive(false);
+        gameController.GameOver();
+
     }
 
 

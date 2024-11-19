@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent enemyAI;
     protected Transform playerPos;
     protected Player player;
+    protected GameController gameController;
 
     public float HP = 50f;
     
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
     
     [SerializeField] GameObject healthPickup;
     public int itemDropChance = 5;
+    public int score = 100;
     public bool enemyActive = true;
     
 
@@ -31,6 +33,7 @@ public class Enemy : MonoBehaviour
             Debug.LogError("NO OBJECT PLAYER FOUND");
         if (!(player = GameObject.Find("/Player").GetComponent<Player>()))
             Debug.LogError("NO OBJECT PLAYER FOUND");
+        gameController = GameObject.Find("/GameController").GetComponent<GameController>();
     }
 
 
@@ -51,6 +54,7 @@ public class Enemy : MonoBehaviour
         if(Random.Range(0, itemDropChance + 1) == 0){
             Instantiate(healthPickup, transform.position, Quaternion.identity);
         }
+        gameController.currentScore += score;
         Destroy(gameObject);
     }
 

@@ -286,6 +286,7 @@ MonoBehaviour:
   attackRange: 10
   healthPickup: {fileID: 6173105986629615927, guid: bacd04debd947284794207de4e75e706, type: 3}
   itemDropChance: 5
+  score: 150
   enemyActive: 1
   fireRate: 6
   reactionTime: 18
