@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ScreenFadeController : MonoBehaviour
 {
     Animator animator;
+    Animator gameOverScreenAni;
     private bool gameOver = false;
 
 
@@ -13,6 +14,7 @@ public class ScreenFadeController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        gameOverScreenAni = GameObject.Find("/Canvas/GameOverScreen").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class ScreenFadeController : MonoBehaviour
     public void OnFadeInComplete(){
         if(gameOver){
             Debug.Log("Game Over");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            gameOverScreenAni.SetTrigger("fadeIn");
         }
         else{
             Debug.Log("Main menu");
