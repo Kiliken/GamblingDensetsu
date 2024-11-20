@@ -43,7 +43,7 @@ public class GameOverScreenScript : MonoBehaviour
         m = Mathf.Max(0, Mathf.FloorToInt(bestTime / 60));
         s = Mathf.Max(0, Mathf.FloorToInt(bestTime % 60));
         ms = Mathf.Max(0, Mathf.FloorToInt((bestTime % 1f) * 100));
-        bestTimeText.text = "タイム: " + m.ToString("00") + ":" + ((int)s).ToString("00") + ":" + ((int)ms).ToString("00");
+        bestTimeText.text = "ベストタイム: " + m.ToString("00") + ":" + ((int)s).ToString("00") + ":" + ((int)ms).ToString("00");
 
         if(time == bestTime)
             bestTimeText.color = Color.yellow;
