@@ -23,6 +23,7 @@ public class GunScript : MonoBehaviour
     Animator animator;
     GameObject crosshairDefault;
     [SerializeField] GameObject crosshairCustom;
+    AudioSource audioSource;
     public string gunName = "Gun";
     public float damage = 10f;
     public float damageModifier = 0f;
@@ -54,6 +55,7 @@ public class GunScript : MonoBehaviour
 
     void Awake(){
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         maxAmmo = maxAmmoDefault;
         currentAmmo = maxAmmoDefault;
         //this.gameObject.SetActive(false);
@@ -191,6 +193,7 @@ public class GunScript : MonoBehaviour
 
         camScript.recoil += recoil;
         animator.SetBool("shooting", true);
+        audioSource.Play();
     }
 
 
@@ -257,6 +260,7 @@ public class GunScript : MonoBehaviour
         }
         camScript.recoil += recoil;
         animator.SetBool("shooting", true);
+        audioSource.Play();
     }
 
     #region //old reload

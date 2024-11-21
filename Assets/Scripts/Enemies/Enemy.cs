@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     protected Transform playerPos;
     protected Player player;
     protected GameController gameController;
+    protected AudioSource audioSource;
 
     public float HP = 50f;
     
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
     protected void Start()
     {
         enemyAI = this.GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
         if (!(playerPos = GameObject.Find("/Player").GetComponent<Transform>()))
             Debug.LogError("NO OBJECT PLAYER FOUND");
         if (!(player = GameObject.Find("/Player").GetComponent<Player>()))

@@ -12,6 +12,7 @@ public class DiceFaceScript : MonoBehaviour
     [SerializeField] Sprite dice5;
     [SerializeField] Sprite dice6;
     Sprite[] diceFaceArray;
+    AudioSource audioSource;
     private bool spriteActive = false;
     private float spriteActiveTime = 3f;
     private float spriteActiveTimer = 0f;
@@ -20,6 +21,7 @@ public class DiceFaceScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         diceFaceArray = new Sprite[]{dice1, dice2, dice3, dice4, dice5, dice6};
     }
 
@@ -43,6 +45,7 @@ public class DiceFaceScript : MonoBehaviour
         GetComponent<Image>().enabled = true;
         spriteActiveTimer = 0f;
         spriteActive = true;
+        audioSource.Play();
     }
 
 

@@ -18,10 +18,16 @@ public class Player : MonoBehaviour
     [SerializeField] Image hpBar;
     public bool playerActive = true;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip playerHurtSFX;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        audioSource = GetComponent<AudioSource>();
         playerCam = GameObject.Find("/CameraHolder/Main Camera").GetComponent<PlayerCam>();
         weapons = GameObject.Find("/CameraHolder/Main Camera/Weapons").GetComponent<WeaponsScript>();
         gameController = GameObject.Find("/GameController").GetComponent<GameController>();
@@ -38,6 +44,12 @@ public class Player : MonoBehaviour
     public void TakeDamage(float dmg){
         HP -= Mathf.Max(0, dmg + damageReceivedModifier);
         hpBar.fillAmount = HP / MaxHP;
+
+        if(!audioSource.isPlaying){
+            audioSource.clip = playerHurtSFX;
+            audioSource.Play();
+        }
+
         if (HP <= 0f){
             Death();
         }

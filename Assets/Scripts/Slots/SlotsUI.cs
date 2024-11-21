@@ -17,12 +17,16 @@ public class SlotsUI : MonoBehaviour
     public Image effectTimerBar;
     [SerializeField] Sprite buffSprite;
     [SerializeField] Sprite debuffSprite;
+    [SerializeField] AudioClip buffAudio;
+    [SerializeField] AudioClip debuffAudio;
+    AudioSource audioSource;
     private bool slotHidden = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         slot1 = transform.GetChild(0).gameObject.GetComponent<Image>();
         slot2 = transform.GetChild(1).gameObject.GetComponent<Image>();
         slot3 = transform.GetChild(2).gameObject.GetComponent<Image>();
@@ -91,5 +95,17 @@ public class SlotsUI : MonoBehaviour
             effectTimerBar.transform.parent.gameObject.SetActive(true);
         else
             effectTimerBar.transform.parent.gameObject.SetActive(false);
+    }
+
+    public void PlaySlotsSFX(bool isBuff){
+        if(isBuff){
+            audioSource.clip = buffAudio;
+            audioSource.volume = 0.4f;
+        }
+        else{
+            audioSource.clip = debuffAudio;
+            audioSource.volume = 0.2f;
+        }
+        audioSource.Play();
     }
 }

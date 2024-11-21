@@ -16745,6 +16745,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3517817592667941963, guid: 020865b3d8fb0134c94a423caef9b27f, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 9d1d03705198e35458f9d5ad66faccef, type: 2}
     - target: {fileID: 8948210977453548112, guid: 020865b3d8fb0134c94a423caef9b27f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

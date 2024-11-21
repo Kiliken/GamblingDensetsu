@@ -47,6 +47,8 @@ public class EnemyMelee : Enemy
 
     protected override void Attack(float dmg, float accuracy)
     {
+        audioSource.Play();
         player.TakeDamage(damage);
+        
     }
 }

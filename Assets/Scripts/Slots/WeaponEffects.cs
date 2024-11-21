@@ -101,6 +101,7 @@ public class WeaponEffects : MonoBehaviour
         else
             effectMultiplier = 1f;
 
+        slotsUI.PlaySlotsSFX(isBuff);
         ApplyEffects();
     }
 
@@ -126,6 +127,7 @@ public class WeaponEffects : MonoBehaviour
             Debug.Log("Rerolled greater debuff");
         }
         effectTimer = 29.99f;
+        slotsUI.PlaySlotsSFX(isBuff);
         slotsUI.SetRerollText(false);
     }
 

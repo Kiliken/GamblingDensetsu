@@ -7,14 +7,16 @@ public class WillOWisp : MonoBehaviour
     float timer = 3;
     [SerializeField] int effectType;
     [SerializeField] GameObject explosionParticle;
+    AudioSource audioSource;
     
 
     List<Enemy> enemiesInRange = new List<Enemy>();
+    private bool isActive = false;
     
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,7 +27,10 @@ public class WillOWisp : MonoBehaviour
             timer -= Time.deltaTime;
         }
         else {
-            WillOEffect();
+            if(!isActive)
+                WillOEffect();
+            else if(isActive && !audioSource.isPlaying)
+                Destroy(gameObject);
         }
     }
 
@@ -74,7 +79,8 @@ public class WillOWisp : MonoBehaviour
                 }
                 break;
         }
-        Destroy(gameObject);
+        audioSource.Play();
+        isActive = true;
     }
 
     
