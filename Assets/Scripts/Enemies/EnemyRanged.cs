@@ -49,6 +49,7 @@ public class EnemyRanged : Enemy
 
     protected override void Attack(float damage, float accuracy) {
         muzzleFlash.Play();
+        audioSource.Play();
         if (Random.Range(1, 100) <= accuracy)
             player.TakeDamage(damage);
     }

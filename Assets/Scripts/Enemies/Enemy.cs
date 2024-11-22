@@ -15,8 +15,10 @@ public class Enemy : MonoBehaviour
     
     public float moveSpeed = 3.5f;
     public float speedModifier = 0f;
+    public float speedIncrease = 0.5f;
    
     public float damage = 10f;
+    public float damageIncrease = 2f;
     [SerializeField] protected float attackRange = 1f;
     protected float timer;
     
@@ -76,5 +78,10 @@ public class Enemy : MonoBehaviour
     public void SetEnemyActive(bool active){
         enemyActive = active;
         enemyAI.enabled = active;
+    }
+
+    public virtual void StrengthenEnemy(int level){
+        damage += damageIncrease * level;
+        moveSpeed += speedIncrease * level;
     }
 }

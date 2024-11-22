@@ -255,7 +255,9 @@ MonoBehaviour:
   HP: 30
   moveSpeed: 3.5
   speedModifier: 0
+  speedIncrease: 0.5
   damage: 2
+  damageIncrease: 1
   attackRange: 10
   healthPickup: {fileID: 6173105986629615927, guid: bacd04debd947284794207de4e75e706, type: 3}
   itemDropChance: 5
@@ -274,9 +276,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1715620839187478927, guid: 18b70758cc8764e438855fadab6e745a, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cc43b1d1c6c103c4390f0cdd4dc9af39, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -320,7 +322,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0

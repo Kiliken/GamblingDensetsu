@@ -8,18 +8,21 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Transform[] enemySpawnPoint;
     // add from spawn rate lowest to highest
     [SerializeField] GameObject[] enemy;
+    private int waveNo = 1;
     private int enemyNo;
     // spawn rates of each enemy above
     [SerializeField] int[] spawnRate;
     [SerializeField] float spawnTime = 5f;
+    private float spawnTimeMax = 5f;
+    private float spawnTimeMin = 5f;
     private float spawnTimer = 0f;
     [SerializeField] GameObject enemyContainer;
 
     //[SerializeField] int spawnCount = 1;
     [SerializeField] int spawnRateIncrease = 2;
     int rateSum = 0;
-    [SerializeField] float spawnRateIncreaseTime = 30f;
-    float spawnRateIncreaseTimer = 0f;
+    [SerializeField] float nextWaveTime = 30f;
+    float nextWaveTimer = 0f;
     public bool spawnStatus = true;
     GameObject newEnemy;
 
@@ -39,14 +42,15 @@ public class EnemySpawner : MonoBehaviour
             else{
                 SpawnEnemy();
                 spawnTimer = 0f;
+                spawnTime = Random.Range(spawnTimeMin, spawnTimeMax);
             }
 
-            if(spawnRateIncreaseTimer < spawnRateIncreaseTime){
-                spawnRateIncreaseTimer += Time.deltaTime;
+            if(nextWaveTimer < nextWaveTime){
+                nextWaveTimer += Time.deltaTime;
             }
             else{
-                IncreaseSpawnRates();
-                spawnRateIncreaseTimer = 0f;
+                NextWave();
+                nextWaveTimer = 0f;
             }
         }
         
@@ -72,14 +76,30 @@ public class EnemySpawner : MonoBehaviour
 
         newEnemy = Instantiate(enemy[e], enemySpawnPoint[Random.Range(0, enemySpawnPoint.Length)].position, Quaternion.identity);
         newEnemy.transform.parent = enemyContainer.transform;
+        if(waveNo > 1){
+            newEnemy.GetComponent<Enemy>().StrengthenEnemy(waveNo);
+        }
         Debug.Log("Enemy spawned " + e);
     }
 
 
-    private void IncreaseSpawnRates(){
-        for(int i = 0; i < enemyNo; i++){
-            spawnRate[i] += spawnRateIncrease;
+    // private void IncreaseSpawnRates(){
+    //     for(int i = 0; i < enemyNo; i++){
+    //         spawnRate[i] += spawnRateIncrease;
+    //     }
+    //     Debug.Log("Spawn rates increased");
+    // }
+
+
+    private void NextWave(){
+        waveNo += 1;
+        if(waveNo == 2){
+            spawnTimeMin = Mathf.Max(2, spawnTimeMin - 1);
         }
-        Debug.Log("Spawn rates increased");
+        else{
+            spawnTimeMin = Mathf.Max(2, spawnTimeMin - 1);
+            spawnTimeMax = Mathf.Max(2, spawnTimeMax - 1);
+        }
+        Debug.Log("WAVE " + waveNo + " STARTED");
     }
 }
