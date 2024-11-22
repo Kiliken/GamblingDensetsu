@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemyContainer;
 
     //[SerializeField] int spawnCount = 1;
-    [SerializeField] int spawnRateIncrease = 2;
+    //[SerializeField] int spawnRateIncrease = 2;
     int rateSum = 0;
     [SerializeField] float nextWaveTime = 30f;
     float nextWaveTimer = 0f;

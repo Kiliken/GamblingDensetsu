@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     TimerScript timer;
     JsonSave saveManager;
     GameOverScreenScript gameOverScript;
+    AudioSource BGM;
     private int _currentScore = 0;
     public int currentScore {get{
         return _currentScore;
@@ -36,6 +37,7 @@ public class GameController : MonoBehaviour
         scoreText = GameObject.Find("/Canvas/Score").GetComponent<TextMeshProUGUI>();
         timer = GameObject.Find("/Canvas/Timer").GetComponent<TimerScript>();
         gameOverScript = GameObject.Find("/Canvas/GameOverScreen").GetComponent<GameOverScreenScript>();
+        BGM = GameObject.Find("/BGM").GetComponent<AudioSource>();
 
         if(saveManager.LoadGame()){
             highScore = saveManager.gameSave.highScore;
@@ -66,6 +68,7 @@ public class GameController : MonoBehaviour
 
         enemyManager.SetEnemyActive(false);
         screenFade.FadeIn(true);
+        BGM.Stop();
     }
 
 }
