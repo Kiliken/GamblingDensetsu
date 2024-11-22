@@ -8,10 +8,11 @@ using UnityEngine.UI;
 
 public class SlotsUI : MonoBehaviour
 {
-    Image slot1;
-    Image slot2;
-    Image slot3;
-    Image[] slotArray;
+    Animator slot1;
+    Animator slot2;
+    Animator slot3;
+    Animator slotsHandle;
+    Animator[] slotArray;
     public TextMeshProUGUI effectText;
     public TextMeshProUGUI rerollText;
     public Image effectTimerBar;
@@ -27,12 +28,13 @@ public class SlotsUI : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        slot1 = transform.GetChild(0).gameObject.GetComponent<Image>();
-        slot2 = transform.GetChild(1).gameObject.GetComponent<Image>();
-        slot3 = transform.GetChild(2).gameObject.GetComponent<Image>();
-        slotArray = new Image[]{slot1, slot2, slot3};
-        effectText = transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();
-        rerollText = transform.GetChild(4).gameObject.GetComponent<TextMeshProUGUI>();
+        slotsHandle = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        slot1 = transform.GetChild(1).gameObject.GetComponent<Animator>();
+        slot2 = transform.GetChild(2).gameObject.GetComponent<Animator>();
+        slot3 = transform.GetChild(3).gameObject.GetComponent<Animator>();
+        slotArray = new Animator[]{slot1, slot2, slot3};
+        effectText = transform.GetChild(4).gameObject.GetComponent<TextMeshProUGUI>();
+        rerollText = transform.GetChild(5).gameObject.GetComponent<TextMeshProUGUI>();
 
         HideSlots();
         effectText.gameObject.SetActive(false);
@@ -47,18 +49,36 @@ public class SlotsUI : MonoBehaviour
         
     }
 
-
-    public void ChangeSlotIcon(int slotNo, int isBuff){
-        slotArray[slotNo].gameObject.SetActive(true);
-        if(isBuff == 1)
-            slotArray[slotNo].sprite = buffSprite;
-        else
-             slotArray[slotNo].sprite = debuffSprite;
+    public void SpinSlot(int s1, int s2, int s3){
+        slotsHandle.gameObject.SetActive(true);
+        slotsHandle.SetTrigger("slotSpin");
+        int[] b = {s1, s2, s3};
+        for(int i = 0; i < 3; i++){
+            slotArray[i].gameObject.SetActive(true);
+            if(b[i] == 1){
+                // buff animation
+                slotArray[i].SetTrigger("spinBuff");
+            }
+            else{
+                // debuff animation
+                slotArray[i].SetTrigger("spinDebuff");
+            }
+        }
         slotHidden = false;
     }
 
+    // public void ChangeSlotIcon(int slotNo, int isBuff){
+    //     slotArray[slotNo].gameObject.SetActive(true);
+    //     if(isBuff == 1)
+    //         slotArray[slotNo].sprite = buffSprite;
+    //     else
+    //          slotArray[slotNo].sprite = debuffSprite;
+    //     slotHidden = false;
+    // }
+
 
     public void HideSlots(){
+        slotsHandle.gameObject.SetActive(false);
         if(!slotHidden){
             for(int i = 0; i < 3; i++){
                 slotArray[i].gameObject.SetActive(false);
@@ -100,7 +120,7 @@ public class SlotsUI : MonoBehaviour
     public void PlaySlotsSFX(bool isBuff){
         if(isBuff){
             audioSource.clip = buffAudio;
-            audioSource.volume = 0.4f;
+            audioSource.volume = 0.5f;
         }
         else{
             audioSource.clip = debuffAudio;

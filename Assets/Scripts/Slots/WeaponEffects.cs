@@ -65,10 +65,10 @@ public class WeaponEffects : MonoBehaviour
             if(Input.GetButtonDown("PullSlots")){
                 if(effectTimer == effectTime){
                     // pull slots
-                    PullSlots();
+                    StartCoroutine(PullSlots());
                 }
                 else if(effectActive && isBuff && effectMultiplier == 1){
-                    Reroll();
+                    StartCoroutine(Reroll());
                 }
                 
             }
@@ -76,16 +76,17 @@ public class WeaponEffects : MonoBehaviour
         
     }
 
-    private void PullSlots(){
+    private IEnumerator PullSlots(){
         int first = Random.Range(0, 2);
         // change first slot sprite
-        slotsUI.ChangeSlotIcon(0, first);
+        //slotsUI.ChangeSlotIcon(0, first);
         int second = Random.Range(0, 2);
         // change second slot sprite
-        slotsUI.ChangeSlotIcon(1, second);
+        //slotsUI.ChangeSlotIcon(1, second);
         int third = Random.Range(0, 2);
         // change third slot sprite
-        slotsUI.ChangeSlotIcon(2, third);
+        //slotsUI.ChangeSlotIcon(2, third);
+        slotsUI.SpinSlot(first, second, third);
 
 
         activeEffectNo = Random.Range(1, maxEffectNo + 1);
@@ -101,34 +102,44 @@ public class WeaponEffects : MonoBehaviour
         else
             effectMultiplier = 1f;
 
-        slotsUI.PlaySlotsSFX(isBuff);
-        ApplyEffects();
+        yield return new WaitForSeconds(1);
+        
+        if(gun.currentWeapon){
+            ApplyEffects();
+            slotsUI.PlaySlotsSFX(isBuff);
+        }     
     }
 
 
     // reroll for greater buff/debuff
-    private void Reroll(){
+    private IEnumerator Reroll(){
         effectMultiplier = 1.5f;
         // greater buff
         if(Random.Range(0, 2) == 0){
-            slotsUI.ChangeSlotIcon(0, 1);
-            slotsUI.ChangeSlotIcon(1, 1);
-            slotsUI.ChangeSlotIcon(2, 1);
-            ApplyEffects();
+            // slotsUI.ChangeSlotIcon(0, 1);
+            // slotsUI.ChangeSlotIcon(1, 1);
+            // slotsUI.ChangeSlotIcon(2, 1);
+            slotsUI.SpinSlot(1, 1, 1);
             Debug.Log("Rerolled greater buff");
         }
         // greater debuff
         else{
-            slotsUI.ChangeSlotIcon(0, 0);
-            slotsUI.ChangeSlotIcon(1, 0);
-            slotsUI.ChangeSlotIcon(2, 0);
+            // slotsUI.ChangeSlotIcon(0, 0);
+            // slotsUI.ChangeSlotIcon(1, 0);
+            // slotsUI.ChangeSlotIcon(2, 0);
+            slotsUI.SpinSlot(0, 0, 0);
             isBuff = false;
-            ApplyEffects();
             Debug.Log("Rerolled greater debuff");
         }
-        effectTimer = 29.99f;
-        slotsUI.PlaySlotsSFX(isBuff);
         slotsUI.SetRerollText(false);
+        effectTimer = 30.99f;
+
+        yield return new WaitForSeconds(1);
+        
+        if(gun.currentWeapon){
+            ApplyEffects();
+            slotsUI.PlaySlotsSFX(isBuff);
+        }
     }
 
     public void ApplyEffects(){

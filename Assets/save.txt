@@ -1,1 +1,1 @@
-{"highScore":8350,"bestTime":202.49920654296876}
+{"highScore":10000,"bestTime":211.5334014892578}
