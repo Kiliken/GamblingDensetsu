@@ -8,13 +8,15 @@ public class ScreenFadeController : MonoBehaviour
     Animator animator;
     Animator gameOverScreenAni;
     private bool gameOver = false;
+    public bool inGame = true;
 
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        gameOverScreenAni = GameObject.Find("/Canvas/GameOverScreen").GetComponent<Animator>();
+        if(inGame)
+            gameOverScreenAni = GameObject.Find("/Canvas/GameOverScreen").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,12 +33,13 @@ public class ScreenFadeController : MonoBehaviour
 
 
     public void OnFadeInComplete(){
-        if(gameOver){
+        if(gameOver && inGame){
             Debug.Log("Game Over");
             gameOverScreenAni.SetTrigger("fadeIn");
         }
         else{
             Debug.Log("Main menu");
+            SceneManager.LoadScene("Battle");
         }
     }
 }
