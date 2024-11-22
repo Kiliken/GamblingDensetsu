@@ -18,6 +18,7 @@ public class SlotsUI : MonoBehaviour
     public Image effectTimerBar;
     [SerializeField] Sprite buffSprite;
     [SerializeField] Sprite debuffSprite;
+    [SerializeField] AudioClip spinAudio;
     [SerializeField] AudioClip buffAudio;
     [SerializeField] AudioClip debuffAudio;
     AudioSource audioSource;
@@ -65,6 +66,10 @@ public class SlotsUI : MonoBehaviour
             }
         }
         slotHidden = false;
+
+        audioSource.clip = spinAudio;
+        audioSource.volume = 0.5f;
+        audioSource.Play();
     }
 
     // public void ChangeSlotIcon(int slotNo, int isBuff){

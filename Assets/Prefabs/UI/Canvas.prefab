@@ -3312,6 +3312,7 @@ MonoBehaviour:
   effectTimerBar: {fileID: 2660069217808444888}
   buffSprite: {fileID: 21300000, guid: 9a8f3ae25dd4841478a5fc0053a92a3e, type: 3}
   debuffSprite: {fileID: 21300000, guid: ae9ea2c1867c13d419b2b607f466995d, type: 3}
+  spinAudio: {fileID: 8300000, guid: d63db40f78c0e9849b98e3f156a25826, type: 3}
   buffAudio: {fileID: 8300000, guid: 0053bf61f5aaeac4498451ea1c6023b4, type: 3}
   debuffAudio: {fileID: 8300000, guid: 38b6f10333a11e14595828aea3c0ad53, type: 3}
 --- !u!82 &3228635854427065493
