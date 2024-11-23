@@ -37,8 +37,11 @@ public class ScreenFadeController : MonoBehaviour
             Debug.Log("Game Over");
             gameOverScreenAni.SetTrigger("fadeIn");
         }
+        else if(inGame){
+            SceneManager.LoadScene("MainMenu");
+        }
         else{
-            Debug.Log("Main menu");
+            Debug.Log("from Main menu to battle");
             SceneManager.LoadScene("Battle");
         }
     }

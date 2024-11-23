@@ -74,6 +74,6 @@ public class Player : MonoBehaviour
         playerMovement.playerActive = active;
         playerCam.playerActive = active;
         if(!active)
-            weapons.DisableWeapon();
+            weapons.HideWeapons();
     }
 }

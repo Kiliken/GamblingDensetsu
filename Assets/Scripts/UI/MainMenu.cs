@@ -14,7 +14,8 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         screenFade = GameObject.Find("/Canvas/ScreenFade").GetComponent<ScreenFadeController>();
-        
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame

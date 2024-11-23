@@ -77,7 +77,20 @@ public class WeaponsScript : MonoBehaviour
         audioSource.Play();
     }
 
+
+    public void EnableWeapon(){
+        transform.GetChild(currentWeapon).GetComponent<GunScript>().currentWeapon = true;
+        isActive = true;
+    }
+
+
     public void DisableWeapon(){
+        transform.GetChild(currentWeapon).GetComponent<GunScript>().currentWeapon = false;
+        isActive = false;
+    }
+
+
+    public void HideWeapons(){
         transform.GetChild(currentWeapon).GetComponent<GunScript>().SelectOtherWeapon();
         transform.GetChild(currentWeapon).GetComponent<WeaponEffects>().RemoveEffects();
         isActive = false;

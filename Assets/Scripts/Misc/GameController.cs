@@ -13,6 +13,9 @@ public class GameController : MonoBehaviour
     JsonSave saveManager;
     GameOverScreenScript gameOverScript;
     AudioSource BGM;
+    Player player;
+    WeaponsScript weapons;
+    GameObject pauseMenu;
     private int _currentScore = 0;
     public int currentScore {get{
         return _currentScore;
@@ -26,6 +29,7 @@ public class GameController : MonoBehaviour
     public int highScore = 0;
     public float currentTime = 0f;
     public float bestTime = 0f;
+    public bool gamePaused = false;
 
 
     // Start is called before the first frame update
@@ -37,7 +41,12 @@ public class GameController : MonoBehaviour
         scoreText = GameObject.Find("/Canvas/Score").GetComponent<TextMeshProUGUI>();
         timer = GameObject.Find("/Canvas/Timer").GetComponent<TimerScript>();
         gameOverScript = GameObject.Find("/Canvas/GameOverScreen").GetComponent<GameOverScreenScript>();
+        pauseMenu = GameObject.Find("/Canvas/PauseMenu");
         BGM = GameObject.Find("/BGM").GetComponent<AudioSource>();
+        player = GameObject.Find("/Player").GetComponent<Player>();
+        weapons = GameObject.Find("/CameraHolder/Main Camera/Weapons").GetComponent<WeaponsScript>();
+
+        pauseMenu.SetActive(false);
 
         if(saveManager.LoadGame()){
             highScore = saveManager.gameSave.highScore;
@@ -46,11 +55,19 @@ public class GameController : MonoBehaviour
     }
 
 
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
+    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetButtonDown("Pause")){
+            if(!gamePaused){
+                PauseGame();
+            }
+            else if(gamePaused && pauseMenu.activeSelf){
+                UnpauseGame();
+            }
+
+        }
+    }
 
 
     public void GameOver(){
@@ -69,6 +86,37 @@ public class GameController : MonoBehaviour
         enemyManager.SetEnemyActive(false);
         screenFade.FadeIn(true);
         BGM.Stop();
+    }
+
+
+    public void QuitGame(){
+        timer.timerActive = false;
+        player.SetPlayerActive(false);
+        enemyManager.SetEnemyActive(false);
+        screenFade.FadeIn(false);
+        BGM.Stop();
+    }
+
+
+    public void PauseGame(){
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0;
+        gamePaused = true;
+        weapons.DisableWeapon();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        BGM.volume = 0.1f;
+    }
+
+
+    public void UnpauseGame(){
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+        gamePaused = false;
+        weapons.EnableWeapon();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        BGM.volume = 0.4f;
     }
 
 }

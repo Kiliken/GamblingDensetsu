@@ -102,6 +102,7 @@ public class WeaponEffects : MonoBehaviour
         else
             effectMultiplier = 1f;
 
+        effectActive = true;
         yield return new WaitForSeconds(1);
         
         if(gun.currentWeapon){
@@ -134,6 +135,7 @@ public class WeaponEffects : MonoBehaviour
         slotsUI.SetRerollText(false);
         effectTimer = 30.99f;
 
+        effectActive = true;
         yield return new WaitForSeconds(1);
         
         if(gun.currentWeapon){
@@ -218,7 +220,6 @@ public class WeaponEffects : MonoBehaviour
                     break;
                     
             }
-            effectActive = true;
             slotsUI.SetEffectTimeBar(true);
         }
         
