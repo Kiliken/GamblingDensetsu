@@ -14,6 +14,7 @@ public class SlotsUI : MonoBehaviour
     Animator slotsHandle;
     Animator[] slotArray;
     public TextMeshProUGUI effectText;
+    GameObject effectBG;
     public TextMeshProUGUI rerollText;
     public Image effectTimerBar;
     [SerializeField] Sprite buffSprite;
@@ -34,11 +35,13 @@ public class SlotsUI : MonoBehaviour
         slot2 = transform.GetChild(2).gameObject.GetComponent<Animator>();
         slot3 = transform.GetChild(3).gameObject.GetComponent<Animator>();
         slotArray = new Animator[]{slot1, slot2, slot3};
-        effectText = transform.GetChild(4).gameObject.GetComponent<TextMeshProUGUI>();
-        rerollText = transform.GetChild(5).gameObject.GetComponent<TextMeshProUGUI>();
+        effectBG = transform.GetChild(4).gameObject;
+        effectText = transform.GetChild(5).gameObject.GetComponent<TextMeshProUGUI>();
+        rerollText = transform.GetChild(6).gameObject.GetComponent<TextMeshProUGUI>();
 
         HideSlots();
         effectText.gameObject.SetActive(false);
+        effectBG.SetActive(false);
         rerollText.gameObject.SetActive(false);
         effectTimerBar.transform.parent.gameObject.SetActive(false);
     }
@@ -94,6 +97,7 @@ public class SlotsUI : MonoBehaviour
 
 
     public void SetEffectText(String eText, bool isBuff){
+        effectBG.SetActive(true);
         effectText.gameObject.SetActive(true);
         effectText.text = eText;
         if(isBuff)
@@ -105,6 +109,7 @@ public class SlotsUI : MonoBehaviour
 
     public void HideEffectText(){
         effectText.gameObject.SetActive(false);
+        effectBG.SetActive(false);
     }
 
 
