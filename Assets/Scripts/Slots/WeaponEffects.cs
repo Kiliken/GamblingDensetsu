@@ -17,16 +17,17 @@ public class WeaponEffects : MonoBehaviour
     private float effectTimer = 30f;
     public bool effectActive = false;
     public int activeEffectNo = 0;  // 0 = none, 1,2,3... - effects
-    // 1:player speed up/down, 2:enemy speed down/up, 3:player damage up/down, 4: enemy damage down/up
+    // 1:player speed up/down, 2:enemy speed down/up, 3:player damage up/down, 4: enemy damage down/up, 5: explosion, 6: enemy size
     private bool isBuff = true;
     private float effectMultiplier = 1f;
-    private int maxEffectNo = 5;
+    private int maxEffectNo = 6;
     // movement speed
     public float moveSpeedModifier = 3f;
     public bool playerSlowBullets = false;
     public bool enemySlowBullets = false;
     // damage
     public float damageModifier = 2f;
+    public float sizeModifier = 0.5f;
 
 
     // Start is called before the first frame update
@@ -90,6 +91,7 @@ public class WeaponEffects : MonoBehaviour
 
 
         activeEffectNo = Random.Range(1, maxEffectNo + 1);
+        activeEffectNo = 6; // debug
         int p = first + second + third;
         Debug.Log(p);
         if(p > 1)
@@ -218,6 +220,16 @@ public class WeaponEffects : MonoBehaviour
                     
                     }
                     break;
+                    case 6: // enemy size
+                    if(isBuff){
+                        enemyManager.SetEnemySize(sizeModifier + effectMultiplier);
+                        slotsUI.SetEffectText("敵サイズ " + plus, true);
+                    }
+                    else{
+                        enemyManager.SetEnemySize(-(sizeModifier + effectMultiplier));
+                        slotsUI.SetEffectText("敵サイズ " + minus, false);
+                    }
+                    break;
                     
             }
             slotsUI.SetEffectTimeBar(true);
@@ -245,6 +257,10 @@ public class WeaponEffects : MonoBehaviour
                 case 5:
                     effectController.effNum = -1;
                     Debug.Log("Will o wisp effect removed");
+                    break;
+                case 6: // enemy size
+                    enemyManager.SetEnemySize(0);
+                    Debug.Log("Enemy size effect removed");
                     break;
             }
             slotsUI.HideSlots();

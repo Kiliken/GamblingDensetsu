@@ -191,6 +191,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   playerActive: 1
   playerHurtSFX: {fileID: 8300000, guid: ce7d9863aaa58d0469ecc6782182b89f, type: 3}
+  playerHealSFX: {fileID: 8300000, guid: 88d01af75b1e1a5488fcd28ecd36a98f, type: 3}
 --- !u!114 &3161990138560962121
 MonoBehaviour:
   m_ObjectHideFlags: 0

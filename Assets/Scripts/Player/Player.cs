@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 
     AudioSource audioSource;
     [SerializeField] AudioClip playerHurtSFX;
+    [SerializeField] AudioClip playerHealSFX;
 
 
 
@@ -59,6 +60,8 @@ public class Player : MonoBehaviour
     public void RestoreHP(float HPRestored){
         HP = Mathf.Min(MaxHP, HP + HPRestored);
         hpBar.fillAmount = HP / MaxHP;
+        audioSource.clip = playerHealSFX;
+        audioSource.Play();
     }
 
 
