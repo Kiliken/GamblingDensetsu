@@ -91,7 +91,7 @@ public class WeaponEffects : MonoBehaviour
 
 
         activeEffectNo = Random.Range(1, maxEffectNo + 1);
-        activeEffectNo = 6; // debug
+        //activeEffectNo = 6; // debug
         int p = first + second + third;
         Debug.Log(p);
         if(p > 1)

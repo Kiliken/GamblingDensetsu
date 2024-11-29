@@ -152,7 +152,7 @@ public class GunScript : MonoBehaviour
                 if(enemy != null){
                     float dmg = Mathf.Max(1, critDamage + damageModifier);
                     enemy.TakeDamage(dmg);
-                    DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                    DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.dmgNoPos.position, Quaternion.identity).GetComponent<DamagePopUp>();
                     popUpDamage.SetDamageText((int)dmg);
                     popUpDamage.SetTextColor(Color.red);
                     Debug.Log(" Crit Spot Critical Hit");
@@ -170,7 +170,7 @@ public class GunScript : MonoBehaviour
                     if(Random.Range(0, critChance + 1) == 0){
                         float dmg = Mathf.Max(1, critDamage + damageModifier);
                         enemy.TakeDamage(dmg);
-                        DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                        DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.dmgNoPos.position, Quaternion.identity).GetComponent<DamagePopUp>();
                         popUpDamage.SetDamageText((int)dmg);
                         popUpDamage.SetTextColor(Color.yellow);
                         Debug.Log("Critical Hit");
@@ -179,7 +179,7 @@ public class GunScript : MonoBehaviour
                     {
                         float dmg = Mathf.Max(1, damage + damageModifier);
                         enemy.TakeDamage(dmg);
-                        DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                        DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.dmgNoPos.position, Quaternion.identity).GetComponent<DamagePopUp>();
                         popUpDamage.SetDamageText((int)dmg);
                     }
                         
@@ -221,7 +221,7 @@ public class GunScript : MonoBehaviour
                     if(enemy != null){
                         float dmg = Mathf.Max(1, critDamage + damageModifier);
                         enemy.TakeDamage(dmg);
-                        DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                        DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.dmgNoPos.position, Quaternion.identity).GetComponent<DamagePopUp>();
                         popUpDamage.SetDamageText((int)dmg);
                         popUpDamage.SetTextColor(Color.red);
                         Debug.Log("Crit Spot Critical Hit");
@@ -238,7 +238,7 @@ public class GunScript : MonoBehaviour
                         {
                             float dmg = Mathf.Max(1, critDamage + damageModifier);
                             enemy.TakeDamage(dmg);
-                            DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                            DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.dmgNoPos.position, Quaternion.identity).GetComponent<DamagePopUp>();
                             popUpDamage.SetDamageText((int)dmg);
                             popUpDamage.SetTextColor(Color.yellow);
                             Debug.Log("Critical Hit");
@@ -246,7 +246,7 @@ public class GunScript : MonoBehaviour
                         else {
                             float dmg = Mathf.Max(1, damage + damageModifier);
                             enemy.TakeDamage(dmg);
-                            DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.transform.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                            DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.dmgNoPos.position, Quaternion.identity).GetComponent<DamagePopUp>();
                             popUpDamage.SetDamageText((int)dmg);
                         }
                         

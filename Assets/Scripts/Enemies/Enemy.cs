@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     public int itemDropChance = 5;
     public int score = 100;
     public bool enemyActive = true;
+    public Transform dmgNoPos;
     
 
 
