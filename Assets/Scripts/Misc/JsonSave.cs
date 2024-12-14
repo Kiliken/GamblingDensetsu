@@ -33,14 +33,15 @@ public class JsonSave : MonoBehaviour
         };
 
         string json = JsonUtility.ToJson(newSave);
-        File.WriteAllText(Application.dataPath + "/save.txt", json);
+        File.WriteAllText(Application.persistentDataPath + "/save.txt", json);
     }
 
 
     public bool LoadGame() {
-        if (File.Exists(Application.dataPath + "/save.txt")) { 
-            
-            string json = File.ReadAllText(Application.dataPath + "/save.txt");
+        if (File.Exists(Application.persistentDataPath + "/save.txt")) {
+
+            Debug.Log(Application.persistentDataPath + "/save.txt");
+            string json = File.ReadAllText(Application.persistentDataPath + "/save.txt");
             gameSave = JsonUtility.FromJson<SaveFile>(json);
             Debug.Log(json);
 
