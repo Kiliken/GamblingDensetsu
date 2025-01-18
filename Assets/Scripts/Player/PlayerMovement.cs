@@ -98,6 +98,10 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
             crouching = false;
         }
+
+        if (Input.GetButton("Melee")){
+            MeleeAttack();
+        }
     }
 
 
@@ -201,6 +205,11 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+
+    private void MeleeAttack(){
+        Debug.Log("Melee Attack");
     }
 
 

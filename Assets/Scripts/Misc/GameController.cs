@@ -105,7 +105,7 @@ public class GameController : MonoBehaviour
         weapons.DisableWeapon();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        BGM.volume = 0.1f;
+        BGM.volume = 0.05f;
     }
 
 
@@ -116,7 +116,7 @@ public class GameController : MonoBehaviour
         weapons.EnableWeapon();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        BGM.volume = 0.4f;
+        BGM.volume = 0.2f;
     }
 
 }
