@@ -8,6 +8,9 @@ using UnityEngine.UIElements.Experimental;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] Camera cam;
+    [SerializeField] GameObject damageParticle;
+
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
@@ -59,6 +62,13 @@ public class PlayerMovement : MonoBehaviour
     }
     [HideInInspector] public bool playerActive = true;
 
+    // melee
+    private bool canMelee = true;
+    [SerializeField] float meleeDamage = 1f;
+    [SerializeField] float meleeRange = 1f;
+    [SerializeField] float meleeCD = 3f;
+    private float meleeCDTimer = 0f;
+
 
     // Start is called before the first frame update
     private void Start()
@@ -99,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
             crouching = false;
         }
 
-        if (Input.GetButton("Melee")){
+        if (Input.GetButtonDown("Melee") && canMelee){
             MeleeAttack();
         }
     }
@@ -168,6 +178,16 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.drag = 0;
             }
+
+            if(!canMelee){
+                if(meleeCDTimer < meleeCD){
+                    meleeCDTimer += Time.deltaTime;
+                }
+                else{
+                    canMelee = true;
+                    meleeCDTimer = 0;
+                }
+            }
         }
     }
 
@@ -210,6 +230,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void MeleeAttack(){
         Debug.Log("Melee Attack");
+        RaycastHit hit;
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, meleeRange, LayerMask.GetMask("Ground", "Enemy"))){
+            Debug.Log(hit.transform.name);
+
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
+            if(enemy != null){
+                enemy.TakeDamage(meleeDamage);
+                DamagePopUp popUpDamage = Instantiate(damageParticle, enemy.dmgNoPos.position, Quaternion.identity).GetComponent<DamagePopUp>();
+                popUpDamage.SetDamageText((int)meleeDamage);
+            }
+        }
+        canMelee = false;
     }
 
 

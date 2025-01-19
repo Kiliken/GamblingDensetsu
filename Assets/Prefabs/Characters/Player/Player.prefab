@@ -91,7 +91,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402632263278538116}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 3d973f93b70b1704fa0ffacf78ecacf1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -172,7 +172,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &693514546683341504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,11 +204,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60351b62c8af7842bd1b83e7ee7908b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  damageParticle: {fileID: 4956648008709220789, guid: 3a8aad85be74b8348b7341f2e6b5b26a, type: 3}
   walkSpeed: 7
   sprintSpeed: 10
   speedModifier: 0
   groundDrag: 5
-  jumpForce: 12
+  jumpForce: 10
   jumpCooldown: 0.25
   airMultiplayer: 0.4
   crouchingSpeed: 3.5
@@ -221,6 +223,9 @@ MonoBehaviour:
   orientation: {fileID: 8748120694738000450}
   state: 0
   playerActive: 1
+  meleeDamage: 1
+  meleeRange: 3
+  meleeCD: 3
 --- !u!135 &2136508649952722252
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -228,7 +233,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3068259248728202209}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 3d973f93b70b1704fa0ffacf78ecacf1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

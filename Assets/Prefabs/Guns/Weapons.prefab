@@ -258,6 +258,10 @@ PrefabInstance:
       propertyPath: gunNameText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6579975295579869885, guid: c2b70cd5879864c46abaf7b3e119a4c0, type: 3}
+      propertyPath: damageParticle
+      value: 
+      objectReference: {fileID: 4956648008709220789, guid: 3a8aad85be74b8348b7341f2e6b5b26a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -415,9 +419,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8789359695458583362, guid: 182b1bc01b29ddd409728fe304bac375, type: 3}
+      propertyPath: critDamage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789359695458583362, guid: 182b1bc01b29ddd409728fe304bac375, type: 3}
       propertyPath: gunNameText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8789359695458583362, guid: 182b1bc01b29ddd409728fe304bac375, type: 3}
+      propertyPath: damageParticle
+      value: 
+      objectReference: {fileID: 4956648008709220789, guid: 3a8aad85be74b8348b7341f2e6b5b26a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -496,6 +508,10 @@ PrefabInstance:
       propertyPath: gunNameText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8357203268454504176, guid: b628b33f08343484fad50660771f582f, type: 3}
+      propertyPath: damageParticle
+      value: 
+      objectReference: {fileID: 4956648008709220789, guid: 3a8aad85be74b8348b7341f2e6b5b26a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
