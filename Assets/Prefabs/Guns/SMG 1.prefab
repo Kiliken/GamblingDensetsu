@@ -96,6 +96,7 @@ MonoBehaviour:
   playerSlowBullets: 0
   enemySlowBullets: 0
   damageModifier: 2
+  sizeModifier: 0.5
 --- !u!95 &6070068290747050946
 Animator:
   serializedVersion: 5
@@ -129,7 +130,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4320eb2f6ddf6b84e99cc944b4a03835, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
