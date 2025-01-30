@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     [Space(12)]
     [SerializeField] Image hpBar;
     public bool playerActive = true;
-
+    [SerializeField] DamageIndicatorHolder dmgIndHolder;
     AudioSource audioSource;
     [SerializeField] AudioClip playerHurtSFX;
     [SerializeField] AudioClip playerHealSFX;
@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
         playerCam = GameObject.Find("/CameraHolder/Main Camera").GetComponent<PlayerCam>();
         weapons = GameObject.Find("/CameraHolder/Main Camera/Weapons").GetComponent<WeaponsScript>();
         gameController = GameObject.Find("/GameController").GetComponent<GameController>();
+        dmgIndHolder = GameObject.Find("/Canvas/DmgIndHolder").GetComponent<DamageIndicatorHolder>();
         HP = MaxHP;
     }
 
@@ -78,5 +79,9 @@ public class Player : MonoBehaviour
         playerCam.playerActive = active;
         if(!active)
             weapons.HideWeapons();
+    }
+
+    public void SetDamageIndicator(Transform enemyLocation){
+        dmgIndHolder.CreateIndicator(transform, playerCam.gameObject.transform, enemyLocation);
     }
 }

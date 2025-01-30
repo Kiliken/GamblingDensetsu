@@ -49,6 +49,6 @@ public class EnemyMelee : Enemy
     {
         audioSource.Play();
         player.TakeDamage(damage);
-        
+        player.SetDamageIndicator(transform);
     }
 }

@@ -52,5 +52,6 @@ public class EnemyRanged : Enemy
         audioSource.Play();
         if (Random.Range(1, 100) <= accuracy)
             player.TakeDamage(damage);
+            player.SetDamageIndicator(transform);
     }
 }
