@@ -34,7 +34,7 @@ public class HealthSpawner : MonoBehaviour
         if(transform.childCount < 2)
         {
             Instantiate(healthPickup, transform.GetChild(0).transform.position, Quaternion.identity, transform);
-            //Debug.Log("health spawned");
+            Debug.Log("health spawned");
         }
         //else
         //{
