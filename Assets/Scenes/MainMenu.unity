@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: f4d5a877d4cb5b24bac024de3d97dabc, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_text: "\u623B\u308B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 701377780f16fa7439100f51b8896835, type: 2}
-  m_sharedMaterial: {fileID: 4752095562317109233, guid: 90d97ff00dfa8fb42846aeb3740a0ccd, type: 2}
+  m_sharedMaterial: {fileID: 6271352468403588708, guid: 701377780f16fa7439100f51b8896835, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1817,7 +1817,7 @@ MonoBehaviour:
   m_text: "\u30AF\u30EC\u30B8\u30C3\u30C8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 701377780f16fa7439100f51b8896835, type: 2}
-  m_sharedMaterial: {fileID: 4752095562317109233, guid: 90d97ff00dfa8fb42846aeb3740a0ccd, type: 2}
+  m_sharedMaterial: {fileID: 6271352468403588708, guid: 701377780f16fa7439100f51b8896835, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2197,10 +2197,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC:\t\u30BC\u30A4\u30E4\u30FC\u3000\u30A2\u30A6\u30F3\n\t\t\t\t\u30DE\u30EA\u30A2\u30FC\u30CB\u3000\u30D5\u30E9\u30F3\u30C1\u30A7\u30B9\u30B3\u3000\u30D1\u30AA\u30ED\n\n\u30D7\u30E9\u30F3\u30CA\u30FC\uFF1A\t\t\u30B3\u30FC\u30EB\u30DE\u30F3\u3000\u30CB\u30B3\u30E9\u30B9\u3000\u30D1\u30A4\u30AF\n\n\u30C7\u30B6\u30A4\u30CA\u30FC\uFF1A\t\t\u30C1\u30A7\u30F3\u3000\u30E6\u30A6\u3000\u30EC\u30F3\n"
+  m_text: "\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC:\t\u30BC\u30A4\u30E4\u30FC\u3000\u30A2\u30A6\u30F3\n\t\t\t\u30DE\u30EA\u30A2\u30FC\u30CB\u3000\u30D5\u30E9\u30F3\u30C1\u30A7\u30B9\u30B3\u3000\u30D1\u30AA\u30ED\n\n\u30D7\u30E9\u30F3\u30CA\u30FC\uFF1A\t\u30B3\u30FC\u30EB\u30DE\u30F3\u3000\u30CB\u30B3\u30E9\u30B9\u3000\u30D1\u30A4\u30AF\n\n\u30C7\u30B6\u30A4\u30CA\u30FC\uFF1A\t\u30C1\u30A7\u30F3\u3000\u30E6\u30A6\u3000\u30EC\u30F3\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 701377780f16fa7439100f51b8896835, type: 2}
-  m_sharedMaterial: {fileID: 4752095562317109233, guid: 90d97ff00dfa8fb42846aeb3740a0ccd, type: 2}
+  m_sharedMaterial: {fileID: 6271352468403588708, guid: 701377780f16fa7439100f51b8896835, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2263,7 +2263,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1014100009
