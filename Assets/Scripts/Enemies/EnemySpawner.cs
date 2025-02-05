@@ -74,8 +74,13 @@ public class EnemySpawner : MonoBehaviour
             r -= spawnRate[i];
         }
 
-        newEnemy = Instantiate(enemy[e], enemySpawnPoint[Random.Range(0, enemySpawnPoint.Length)].position, Quaternion.identity);
-        newEnemy.transform.parent = enemyContainer.transform;
+        
+        
+         newEnemy = Instantiate(enemy[e], enemySpawnPoint[Random.Range(0,enemySpawnPoint.Length)].position, Quaternion.identity);
+         newEnemy.transform.parent = enemyContainer.transform;
+            
+        
+        
         if(waveNo > 1){
             newEnemy.GetComponent<Enemy>().StrengthenEnemy(waveNo);
         }
